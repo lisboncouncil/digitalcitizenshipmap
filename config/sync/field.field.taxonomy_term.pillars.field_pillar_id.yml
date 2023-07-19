@@ -1,0 +1,23 @@
+uuid: 365d7db1-cd55-43e1-b69a-ae9fa87a74bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_pillar_id
+    - taxonomy.vocabulary.pillars
+id: taxonomy_term.pillars.field_pillar_id
+field_name: field_pillar_id
+entity_type: taxonomy_term
+bundle: pillars
+label: pillar_id
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

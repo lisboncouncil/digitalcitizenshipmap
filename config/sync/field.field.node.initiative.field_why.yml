@@ -1,0 +1,21 @@
+uuid: 980d496d-170b-4a7c-9822-93591768ce45
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_why
+    - node.type.initiative
+  module:
+    - text
+id: node.initiative.field_why
+field_name: field_why
+entity_type: node
+bundle: initiative
+label: 'Reason for recommendation'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

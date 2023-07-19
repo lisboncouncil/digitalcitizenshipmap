@@ -1,0 +1,18 @@
+uuid: be09b658-feaf-474e-8f4c-080959f98dd9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.initiative
+id: node.initiative.title
+field_name: title
+entity_type: node
+bundle: initiative
+label: 'Initiative name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

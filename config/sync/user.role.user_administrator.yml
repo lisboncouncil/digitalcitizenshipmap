@@ -1,0 +1,14 @@
+uuid: 273dec9a-da66-44c4-ae4f-b9ddd5f0b7c3
+langcode: en
+status: true
+dependencies: {  }
+id: user_administrator
+label: 'Users administrator'
+weight: -6
+is_admin: null
+permissions:
+  - 'access user profiles'
+  - 'administer users'
+  - 'cancel account'
+  - 'change own username'
+  - 'view user email addresses'

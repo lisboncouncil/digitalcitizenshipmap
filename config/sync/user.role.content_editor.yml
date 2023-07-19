@@ -1,0 +1,56 @@
+uuid: a5a008d9-0fe3-4e4d-9cb6-bfa1fc5760a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+    - node.type.initiative
+    - node.type.page
+    - taxonomy.vocabulary.types_of_initiative
+    - workflows.workflow.editorial
+  module:
+    - comment
+    - content_moderation
+    - contextual
+    - file
+    - node
+    - path
+    - system
+    - taxonomy
+    - toolbar
+    - tour
+_core:
+  default_config_hash: Wur9kcEOwY1Jal81NssKnz3RhVJxAvBwyWQBGcA_1Go
+id: content_editor
+label: Editor
+weight: -7
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access toolbar'
+  - 'access tour'
+  - 'administer url aliases'
+  - 'create initiative content'
+  - 'create terms in types_of_initiative'
+  - 'create url aliases'
+  - 'delete own article content'
+  - 'delete own page content'
+  - 'edit any initiative content'
+  - 'edit own comments'
+  - 'edit own initiative content'
+  - 'revert all revisions'
+  - 'revert initiative revisions'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view initiative revisions'
+  - 'view latest version'
+  - 'view own unpublished content'
+  - 'view the administration theme'

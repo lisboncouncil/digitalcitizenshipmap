@@ -1,0 +1,14 @@
+_core:
+  default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
+langcode: en
+uuid: 8f55f56a-b1ad-4179-afcb-a2a45eff281e
+name: 'Digital Citizenship Map [BETA version]'
+mail: marcello.verona@lisboncouncil.net
+slogan: ''
+page:
+  403: /node/15
+  404: ''
+  front: /initiatives
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en

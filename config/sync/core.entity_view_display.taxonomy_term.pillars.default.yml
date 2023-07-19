@@ -1,0 +1,33 @@
+uuid: fa7213b5-c014-42ca-b4d1-69b4131ca964
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.pillars.field_pillar_id
+    - taxonomy.vocabulary.pillars
+  module:
+    - text
+id: taxonomy_term.pillars.default
+targetEntityType: taxonomy_term
+bundle: pillars
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_pillar_id:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,29 @@
+uuid: da6319a0-85cb-4c5e-a526-723d65667e6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_target_audience
+    - node.type.initiative
+    - taxonomy.vocabulary.audiences
+id: node.initiative.field_target_audience
+field_name: field_target_audience
+entity_type: node
+bundle: initiative
+label: 'Target audience'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      audiences: audiences
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

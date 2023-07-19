@@ -1,0 +1,19 @@
+uuid: 2d5db0f6-34a8-4a57-8788-e32773389b7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lead_orga_or_person
+    - node.type.initiative
+id: node.initiative.field_lead_orga_or_person
+field_name: field_lead_orga_or_person
+entity_type: node
+bundle: initiative
+label: 'Lead organisation or person'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

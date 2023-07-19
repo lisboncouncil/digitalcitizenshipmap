@@ -1,0 +1,25 @@
+uuid: 132d10f8-c227-4b49-a62b-f2a3bc93c469
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.initiative
+    - taxonomy.vocabulary.types_of_initiative
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - node
+    - taxonomy
+id: expert
+label: Expert
+weight: -8
+is_admin: null
+permissions:
+  - 'create initiative content'
+  - 'create terms in types_of_initiative'
+  - 'edit own initiative content'
+  - 'revert initiative revisions'
+  - 'use editorial transition create_new_draft'
+  - 'view initiative revisions'
+  - 'view latest version'
+  - 'view own unpublished content'

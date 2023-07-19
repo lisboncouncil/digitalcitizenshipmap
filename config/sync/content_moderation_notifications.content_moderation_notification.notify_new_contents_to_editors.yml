@@ -1,0 +1,19 @@
+uuid: deca1915-6215-4523-9a54-a4374845c23a
+langcode: en
+status: true
+dependencies: {  }
+id: notify_new_contents_to_editors
+workflow: editorial
+transitions:
+  create_new_draft: create_new_draft
+roles:
+  content_editor: content_editor
+  administrator: administrator
+author: false
+site_mail: false
+emails: ''
+subject: 'Digital Citizen Map - A new initiative has been created'
+body:
+  value: "<p>Hello editor,&nbsp;</p>\r\n\r\n<p>A new initiative has been created. Please check the website.</p>\r\n"
+  format: basic_html
+label: 'Notify new contents to editors'

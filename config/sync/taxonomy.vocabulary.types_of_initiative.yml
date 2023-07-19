@@ -1,0 +1,8 @@
+uuid: c90d0861-7243-4c76-ad21-c85387798d22
+langcode: en
+status: true
+dependencies: {  }
+name: 'Types of initiative'
+vid: types_of_initiative
+description: ''
+weight: 0
