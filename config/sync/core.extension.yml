@@ -1,6 +1,7 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
+  advanced_text_formatter: 0
   automated_cron: 0
   big_pipe: 0
   block: 0
@@ -9,7 +10,7 @@ module:
   chosen: 0
   chosen_field: 0
   chosen_lib: 0
-  ckeditor: 0
+  ckeditor5: 0
   comment: 0
   config: 0
   contact: 0
@@ -19,6 +20,7 @@ module:
   datetime: 0
   dblog: 0
   dynamic_page_cache: 0
+  easy_breadcrumb: 0
   editor: 0
   field: 0
   field_display_label: 0
@@ -29,6 +31,7 @@ module:
   history: 0
   image: 0
   jquery_ui: 0
+  layout_discovery: 0
   link: 0
   masquerade: 0
   menu_link_content: 0
@@ -39,14 +42,18 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
-  rdf: 0
+  responsive_image: 0
+  scheduler: 0
   search: 0
   select_or_other: 0
   shortcut: 0
+  svg_image: 0
+  svg_image_responsive: 0
   system: 0
   taxonomy: 0
   taxonomy_manager: 0
   text: 0
+  token: 0
   toolbar: 0
   tour: 0
   typed_data: 0
@@ -54,6 +61,9 @@ module:
   user: 0
   views_ui: 0
   workflows: 0
+  ds: 1
+  pathauto: 1
+  ds_extras: 2
   views: 10
   standard: 1000
 theme:
