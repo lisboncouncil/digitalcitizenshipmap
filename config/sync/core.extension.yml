@@ -42,6 +42,7 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  phpass: 0
   responsive_image: 0
   scheduler: 0
   search: 0
@@ -58,6 +59,7 @@ module:
   tour: 0
   typed_data: 0
   update: 0
+  upgrade_status: 0
   user: 0
   views_ui: 0
   workflows: 0
