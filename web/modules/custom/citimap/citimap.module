@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for citimap module.
+ */
+
+
+function citimap_theme() {
+  return [
+    'blocks/citimap_header' => [
+      'variables' => [
+        'data' => []
+      ],
+    ],
+  ];
+}
