@@ -1,0 +1,20 @@
+uuid: e584637f-efbc-49e4-9b6a-b63ae318157a
+langcode: en
+status: true
+dependencies:
+  module:
+    - citimap
+  theme:
+    - citimap01
+id: citimap01_citimapheaderblock
+theme: citimap01
+region: front
+weight: 0
+provider: null
+plugin: citimap_header_block
+settings:
+  id: citimap_header_block
+  label: 'Citimap Header Block'
+  label_display: '0'
+  provider: citimap
+visibility: {  }

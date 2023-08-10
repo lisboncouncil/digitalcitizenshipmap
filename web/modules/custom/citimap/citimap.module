@@ -13,5 +13,21 @@ function citimap_theme() {
         'data' => []
       ],
     ],
+    'blocks/citimap_initiative_filter' => [
+      'variables' => [
+        'data' => []
+      ],
+    ],
   ];
 }
+
+function citimap_preprocess(&$variables) {
+  global $base_root, $base_path;
+
+
+  $variables['citimap_directory'] =  $base_path . \Drupal::service('extension.list.module')->getPath('citimap');
+  $variables['citimap_assets'] =  $base_path .  \Drupal::service('extension.list.module')->getPath('citimap') . "/assets";
+  $variables['citimap_langcode'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+}
+
+

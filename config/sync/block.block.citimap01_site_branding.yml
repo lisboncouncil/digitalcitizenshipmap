@@ -1,0 +1,25 @@
+uuid: ab2d0d7c-63b0-49cc-8cfb-1c3716832a2e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - citimap01
+_core:
+  default_config_hash: n_nlgjggHVfQt2H__zvLOKB2YtjPDbQ5tHijF9LE1aM
+id: citimap01_site_branding
+theme: citimap01
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

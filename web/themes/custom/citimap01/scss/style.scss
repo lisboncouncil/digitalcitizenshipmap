@@ -13,6 +13,9 @@ body {
     background: $white;
 }
 
+p, span, a{
+    color: $accent-shade;
+}
 
 /* COLORS 
 --------------------------------------------------*/
@@ -57,4 +60,9 @@ a {
 
 .slick>div {
     margin: 0 15px;
+}
+
+
+.bg-primary-op10{
+    background-color: rgba($accent-shade, 0.1);
 }

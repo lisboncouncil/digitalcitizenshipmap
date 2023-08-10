@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.initiative.body
     - field.field.node.initiative.field_country
     - field.field.node.initiative.field_email
+    - field.field.node.initiative.field_image
     - field.field.node.initiative.field_lead_orga_or_person
     - field.field.node.initiative.field_pillar
     - field.field.node.initiative.field_target_audience
@@ -14,8 +15,10 @@ dependencies:
     - field.field.node.initiative.field_type_of_initiative
     - field.field.node.initiative.field_url
     - field.field.node.initiative.field_why
+    - image.style.medium
     - node.type.initiative
   module:
+    - svg_image
     - text
     - user
 id: node.initiative.teaser
@@ -35,6 +38,21 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: -20
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: -1
     region: content
   links:
     settings: {  }

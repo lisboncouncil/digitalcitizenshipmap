@@ -1,0 +1,8 @@
+bootstrap_style.style:
+  path: '/bootstrap'
+  defaults:
+    _title: 'Bootstrap Style'
+    _controller: '\Drupal\bootstrap_style\Controller\BootstrapStyleController::build'
+  requirements:
+    _permission: 'access content'
+

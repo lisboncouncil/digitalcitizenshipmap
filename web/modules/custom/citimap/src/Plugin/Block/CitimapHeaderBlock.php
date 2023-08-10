@@ -8,7 +8,7 @@ use Drupal\Core\Block\BlockBase;
  * Provides a citimap block.
  *
  * @Block(
- *   id = "citimap_custom",
+ *   id = "citimap_header_block",
  *   admin_label = @Translation("Citimap Header Block"),
  *   category = @Translation("Custom"),
  * )
