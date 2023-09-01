@@ -10,59 +10,78 @@ Description: Bootstrap 4 with Sass
 -------------------------------------------------*/
 
 body {
-    background: $white;
-}
-
-p, span, a{
-    color: $accent-shade;
+  background: $white;
 }
 
 /* COLORS 
 --------------------------------------------------*/
 
-a {
-    color: $accent-shade;
+p, span, a,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: $accent-shade;
+  font-weight: 400;
 }
 
 .bg-inverse {
-    background: $primary-shade !important;
+  background: $primary-shade !important;
 }
 
-.site-footer {
-    background: $accent-shade !important;
+.bg-accent {
+  background: $accent-shade;
+}
+
+.bg-fullwidth-accent {
+  @include bg-fullwidth($accent-shade);
 }
 
 .menu--main li a {
-    color: $primary-shade;
+  color: $primary-shade;
 }
 
 .menu--account li a {
-    color: $primary-shade;
+  color: $primary-shade;
 }
 
 .site-name-slogan a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .card-group img {
-    margin: 0;
-    width: 100%;
-    height: auto;
+  margin: 0;
+  width: 100%;
+  height: auto;
 }
 
 .card-group .field--type-image {
-    margin: 0
+  margin: 0
 }
 
 .slick {
-    width: 100%;
+  width: 100%;
 }
 
 .slick>div {
-    margin: 0 15px;
+  margin: 0 15px;
 }
 
 
-.bg-primary-op10{
-    background-color: rgba($accent-shade, 0.1);
+.bg-primary-op10 {
+  background-color: rgba($accent-shade, 0.1);
 }
+
+
+.breadcrumb{
+  display: flex;
+  justify-items: center;
+}
+
+
+.max-width-xs { max-width: $breakpoint-xs; }
+.max-width-sm { max-width: $breakpoint-sm; }
+.max-width-md { max-width: $breakpoint-md; }
+.max-width-lg { max-width: $breakpoint-lg; }
+
