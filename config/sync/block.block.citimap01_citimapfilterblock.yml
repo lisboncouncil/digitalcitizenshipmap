@@ -15,6 +15,6 @@ plugin: citimap_filter_block
 settings:
   id: citimap_filter_block
   label: 'Citizenship Map Initiative Filter'
-  label_display: visible
+  label_display: '0'
   provider: citimap
 visibility: {  }

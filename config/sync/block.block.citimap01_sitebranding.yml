@@ -1,0 +1,23 @@
+uuid: 6436b961-489c-424d-b2e6-5dd6dc6d221a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - citimap01
+id: citimap01_sitebranding
+theme: citimap01
+region: footer_first
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: true
+visibility: {  }
