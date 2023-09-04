@@ -1,9 +1,9 @@
 initiative-filter-react:
   js:
-    initiative-filter-react/build/static/js/main.js: {}
+    assets/initiative-filter-dist/js/main.js: {}
   css:
     component:
-      initiative-filter-react/build/static/css/main.css: {}
+      assets/initiative-filter-dist/css/main.css: {}
 
 
 
