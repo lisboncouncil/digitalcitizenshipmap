@@ -1,7 +1,9 @@
 uuid: 273dec9a-da66-44c4-ae4f-b9ddd5f0b7c3
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - file
 id: user_administrator
 label: 'Users administrator'
 weight: -6
@@ -11,4 +13,5 @@ permissions:
   - 'administer users'
   - 'cancel account'
   - 'change own username'
+  - 'delete own files'
   - 'view user email addresses'

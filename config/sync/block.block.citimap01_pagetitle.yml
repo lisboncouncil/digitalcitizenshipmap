@@ -1,0 +1,24 @@
+uuid: a80987ed-11e6-42df-973e-217ca403b4ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - citimap01
+id: citimap01_pagetitle
+theme: citimap01
+region: featured_top
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: /initiatives

@@ -1,0 +1,114 @@
+@import "./variables";
+
+
+footer.site-footer {
+  border-top: 1px solid $accent-shade;
+  padding: 0;
+
+  .footer-1-cont,
+  .footer-2-cont,
+  .footer-3-cont,
+  .footer-4-cont {
+    .block {
+      margin-bottom: 1rem;
+
+      h2,
+      .block-title {
+        @extend .display-5;
+      }
+
+      .nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .nav-item:first-child {
+
+          a,
+          span {
+            padding-left: 0px;
+          }
+        }
+
+        .nav-item a,
+        .nav-item span {
+          padding: 1rem 1rem 0rem 1rem;
+          color: $accent-shade;
+          text-transform: uppercase;
+          font-size: 0.85rem;
+          font-weight: 700;
+
+          &:hover,
+          &.active {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-3-cont {
+
+    // Override navbar
+    .block .nav .nav-item{
+       a, span {
+        text-transform: none;
+        font-size: 1rem;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .footer-4-cont{
+    // Temporary fix for footer 4
+    min-height: 100px;
+    height: 100%;
+  }
+
+  .footer-bottom {
+    min-height: 2rem;
+    background-color: rgba($accent-shade, 0.6);
+
+    .nav {
+      display: flex;
+      justify-content: center;
+
+      a {
+        @extend .text-white;
+
+        &:hover,
+        &.active {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $mobile-breakpoint) {
+  footer.site-footer {
+    .block:not(:first-child) {
+      margin-top: 3rem;
+      h2 {
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  .footer-bottom .nav {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: $mobile-breakpoint) {
+  .footer-4-cont {
+    clip-path: inset(-72px -120vmax 0px 0px) !important;
+  }
+}
+
+@media screen and (min-width: $tablet-breakpoint) {
+  .footer-4-cont {
+    clip-path: inset(-72px -120vmax -48px 0px) !important;
+  }
+}

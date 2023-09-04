@@ -1,0 +1,12 @@
+initiative-filter-react:
+  js:
+    initiative-filter-react/build/static/js/main.js: {}
+  css:
+    component:
+      initiative-filter-react/build/static/css/main.css: {}
+
+
+
+initiative-filter-react-dev:
+  js:
+    http://localhost:3000/static/js/bundle.js: {}

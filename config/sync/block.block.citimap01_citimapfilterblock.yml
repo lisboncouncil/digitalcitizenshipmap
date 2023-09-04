@@ -1,0 +1,20 @@
+uuid: 99f54508-a873-4459-b840-eedfb292487c
+langcode: en
+status: true
+dependencies:
+  module:
+    - citimap
+  theme:
+    - citimap01
+id: citimap01_citimapfilterblock
+theme: citimap01
+region: front
+weight: 0
+provider: null
+plugin: citimap_filter_block
+settings:
+  id: citimap_filter_block
+  label: 'Citizenship Map Initiative Filter'
+  label_display: '0'
+  provider: citimap
+visibility: {  }

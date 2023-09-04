@@ -1,0 +1,25 @@
+uuid: 3f91da76-9aca-4b0b-b2c4-146a5ae2abf8
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - citimap01
+id: citimap01_footer_2
+theme: citimap01
+region: footer_third
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: Footer
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

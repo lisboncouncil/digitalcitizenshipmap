@@ -1,0 +1,63 @@
+@import "_variables";
+
+
+.initiatives-container-grid {
+  display: grid;
+  column-gap: 1.25rem;
+  row-gap: 1.25rem;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+
+.initiative-item{
+  color: $primary;
+  .initiative-item__name{
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  .initiative-item__countries{
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .initiative-item__image img{
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+}
+
+
+
+#initiatives-filter{
+  .filter-open-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    border-radius: 1rem;
+    position: relative;
+    
+    .filter-open-container__toggle{
+      color: white;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+
+    &.expanded {
+      padding: 1rem 5rem 1rem 1rem;
+      max-height: 250px; 
+      background-color: $primary;
+    }
+  }
+
+  .counter{
+    font-size: 12px;
+    font-weight: 500;
+  }
+}

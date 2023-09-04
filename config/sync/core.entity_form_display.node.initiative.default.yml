@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.initiative.body
     - field.field.node.initiative.field_country
     - field.field.node.initiative.field_email
+    - field.field.node.initiative.field_image
     - field.field.node.initiative.field_lead_orga_or_person
     - field.field.node.initiative.field_pillar
     - field.field.node.initiative.field_target_audience
@@ -13,6 +14,7 @@ dependencies:
     - field.field.node.initiative.field_type_of_initiative
     - field.field.node.initiative.field_url
     - field.field.node.initiative.field_why
+    - image.style.thumbnail
     - node.type.initiative
     - workflows.workflow.editorial
   module:
@@ -20,6 +22,7 @@ dependencies:
     - link
     - path
     - select_or_other
+    - svg_image
     - text
 id: node.initiative.default
 targetEntityType: node
@@ -49,6 +52,14 @@ content:
     settings:
       select_element_type: select_or_other_buttons
       sort_options: ''
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 4
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_lead_orga_or_person:
     type: string_textfield
@@ -150,3 +161,5 @@ content:
 hidden:
   field_email: true
   field_target_audience: true
+  publish_on: true
+  unpublish_on: true

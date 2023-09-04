@@ -1,0 +1,7 @@
+
+
+@mixin bg-fullwidth($color) {
+    background-color: $color;
+    box-shadow: 0px 0px 0px 100vmax $color;
+    clip-path: inset(0 -100vmax);
+}

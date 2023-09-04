@@ -1,0 +1,27 @@
+/* Initial state when button is entering (appearing) or exiting (disappearing) */
+.filter-component-enter, .filter-component-exit-active {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  
+  /* Target state when button has fully entered or fully exited */
+  .filter-component-enter-active, .filter-component-exit-done {
+    opacity: 1;
+    max-height: 40px;
+    transition: opacity 300ms, max-height 300ms;
+  }
+  
+  /* Initial state when button is disappearing (beginning to exit) */
+  .filter-component-exit {
+    opacity: 1;
+    max-height: 40px;
+  }
+  
+  /* Target state when button is in the process of disappearing (exiting) */
+  .filter-component-exit-active {
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 300ms, max-height 300ms;
+  }
+  
