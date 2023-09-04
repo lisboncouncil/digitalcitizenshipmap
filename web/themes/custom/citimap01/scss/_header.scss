@@ -1,0 +1,143 @@
+header.header-fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+
+main {
+  margin-top: 0px;
+}
+
+.header-margin {
+  height: 70px //CHANGE;
+}
+
+
+
+body.toolbar-horizontal {
+
+  .header-margin {
+    height: 0px;
+  }
+
+  header.header-fixed {
+    position: static !important;
+    z-index: 10;
+  }
+
+  main {
+    margin-top: 0;
+  }
+}
+
+body.scrolled {
+  header {
+    box-shadow: 1px 1px 3px gray;
+  }
+}
+
+
+header {
+  .navbar {
+    .navbar-container{
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid $accent-shade;
+    }
+
+    .navbar-brand {
+      display: flex;
+      img {
+        max-height: 50px;
+      }
+    }
+
+
+    .nav-item {
+      margin-left: 1.25rem;
+      margin-right: 1.25rem;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+
+      a.nav-link,
+      span.nav-link {
+        font-style: normal;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        font-weight: 500;
+        font-size: 0.8rem;
+        line-height: 1rem;
+        color: $accent-shade;
+        text-transform: uppercase;
+        border-radius: 1rem;
+
+        &:hover{
+          background-color: $accent-shade;
+          color: white;
+        }
+      }
+
+      .dropdown-menu {
+        border-radius: 0;
+
+        .dropdown-item {
+
+          a {
+            width: 100%;
+            display: inline-block;
+
+            &.active,
+            &:active {
+              color: $white;
+            }
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+
+    /*.menu--account li a {
+        color: $primary;
+      }
+  
+      .dropdown-menu.show {
+        margin-top: 0px !important;
+        top: 63px;
+        border-radius: 0px;
+        border: none;
+        
+        & .dropdown-item{
+          padding: 0 !important;
+          cursor: pointer;
+          &:hover, &:active, &.active{
+            background: lighten($secondary, 10%);
+          }
+          & > a{
+            padding: 8px 16px;
+            display: block;
+          }
+        }
+  
+        & .dropdown-item a {
+          font-weight: 500;
+          text-transform: uppercase;
+          font-size: 14px;
+          line-height: 18px;
+  
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }*/
+
+  }
+}

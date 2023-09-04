@@ -1,0 +1,5 @@
+name: 'citimap'
+type: module
+description: 'Extra functionalities for Digital Citizenship Map'
+package: citimap
+core_version_requirement: ^10

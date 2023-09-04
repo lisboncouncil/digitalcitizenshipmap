@@ -1,0 +1,36 @@
+<!--
+    <div class="mt-3" data-bs-toggle="tooltip" data-bs-html="true" title="All materials on this website are provided under the Creative Commons Attribution license (CC-BY) unless otherwise stated. This means you are free to share and adapt the materials, as long as you give appropriate credit and indicate if changes were made. Please refer to the CC-BY license for full terms and conditions.">
+        <img src="/{{directory}}/images/cc-by.svg" style="width: 100px;" alt="CC-BY Licence">
+    </div>
+-->
+
+
+<footer class="site-footer mt-4">
+	{% block footer %}
+		<div class="section-footer-main container pt-5 pb-3">
+			<div class="section-footer-main-row row">
+				<div class="col-lg-9 col-md-6 mt-4 d-flex flex-column align-items-stretch justify-content-between">
+					<div class="footer-1-cont">
+						{{ page.footer_first }}
+					</div>
+					<div class="footer-2-cont mt-4">
+						{{ page.footer_second }}
+					</div>
+					<div class="footer-3-cont mt-4">
+						{{ page.footer_third }}
+					</div>
+				</div>
+        <div class="col-lg-3">
+          <div class="footer-4-cont bg-fullwidth-accent mt-4">
+            {{ page.footer_fourth }}
+          </div>
+        </div>
+      </div>
+		</div>
+		<div class="footer-bottom pt-2 pb-2">
+			<div class="container">
+				{{ page.footer_fifth }}
+			</div>
+		</div>
+	{% endblock %}
+</footer>

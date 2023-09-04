@@ -1,0 +1,22 @@
+uuid: 514c5e4e-7fea-4356-b406-c70122a56385
+langcode: en
+status: true
+dependencies:
+  theme:
+    - citimap01
+_core:
+  default_config_hash: ydSxdq7R66I8UMC460rOzlfzvlUL4VRbdwc6z9DWaUI
+id: citimap01_secondary_local_tasks
+theme: citimap01
+region: highlighted
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

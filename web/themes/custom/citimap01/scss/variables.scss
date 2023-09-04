@@ -4,7 +4,7 @@
 $primary-shade: rgb(255, 78, 46);
 $primary-light: lighten($primary-shade, 37%);
 $primary-dark: darken($primary-shade, 12%);
-$accent-shade: #0079C0;
+$accent-shade: #7E959E;
 $accent-light: lighten($accent-shade, 37%);
 $accent-dark: darken($accent-shade, 12%);
 // Reassign color vars to semantic color scheme
@@ -44,4 +44,27 @@ $enable-responsive-font-sizes: true;
 $enable-shadows: false;
 $enable-gradients: false;
 // Breadcrumbs (Works only on Bootstrap 5+)
-// $breadcrumb-divider: quote(">");
+$breadcrumb-divider: ">";
+
+$table-border-width: 1px;
+
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+$breakpoint-xs: $grid-breakpoints[xs] !default;
+$breakpoint-sm: $grid-breakpoints[sm] !default;
+$breakpoint-md: $grid-breakpoints[md] !default;
+$breakpoint-lg: $grid-breakpoints[lg] !default;
+$breakpoint-xl: $grid-breakpoints[xl] !default;
+$breakpoint-xxl: $grid-breakpoints[xxl] !default;
+
+
+$mobile-breakpoint: $breakpoint-md;
+$tablet-breakpoint: $breakpoint-lg;

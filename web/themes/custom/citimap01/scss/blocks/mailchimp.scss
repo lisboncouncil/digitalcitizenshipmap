@@ -1,0 +1,49 @@
+.block-mailchimp-signup {
+  color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+
+  .block-title {
+    @extend .display-4;
+    font-weight: 500 !important;
+    text-transform: none;
+    color: $white;
+  }
+
+  .content {
+    margin-top: 1.5rem;
+  }
+
+  .form-control {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $white;
+    border-radius: 0px;
+    color: $white;
+    padding-left: 0px;
+  }
+
+  .form-check-label a {
+    color: $white;
+    text-decoration: underline;
+  }
+
+
+  .btn.form-submit {
+    // @extend .button-ediaqi-white;
+  }
+}
+
+
+
+@media screen and (min-width: $mobile-breakpoint) {
+
+  .block-mailchimp-signup {
+    padding-top: 0px !important;
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+
+}

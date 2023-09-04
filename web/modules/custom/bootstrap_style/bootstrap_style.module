@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Bootstrap Style module.
+ */
+
+function bootstrap_style_theme() {
+  return [
+    'bootstrap_style' => [
+      'variables' => [],
+    ],
+  ];
+}
