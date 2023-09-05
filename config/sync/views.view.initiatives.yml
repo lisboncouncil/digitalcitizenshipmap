@@ -9,14 +9,12 @@ dependencies:
     - field.storage.node.field_pillar
     - field.storage.node.field_url
     - node.type.initiative
-    - user.role.authenticated
   module:
     - link
     - node
     - rest
     - serialization
     - svg_image
-    - user
 id: initiatives
 label: Initiatives
 module: views
@@ -422,10 +420,8 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: role
-        options:
-          role:
-            authenticated: authenticated
+        type: none
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -556,7 +552,6 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
-        - user.roles
       tags:
         - 'config:field.storage.node.field_country'
         - 'config:field.storage.node.field_pillar'
@@ -576,7 +571,6 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
-        - user.roles
       tags:
         - 'config:field.storage.node.field_country'
         - 'config:field.storage.node.field_pillar'
@@ -1017,7 +1011,6 @@ display:
         - 'languages:language_interface'
         - request_format
         - 'user.node_grants:view'
-        - user.roles
       tags:
         - 'config:field.storage.node.field_country'
         - 'config:field.storage.node.field_image'
