@@ -48,22 +48,12 @@ $breadcrumb-divider: ">";
 
 $table-border-width: 1px;
 
-
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px
-) !default;
-
-$breakpoint-xs: $grid-breakpoints[xs] !default;
-$breakpoint-sm: $grid-breakpoints[sm] !default;
-$breakpoint-md: $grid-breakpoints[md] !default;
-$breakpoint-lg: $grid-breakpoints[lg] !default;
-$breakpoint-xl: $grid-breakpoints[xl] !default;
-$breakpoint-xxl: $grid-breakpoints[xxl] !default;
+$breakpoint-xs: 0 !default;
+$breakpoint-sm: 576px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 992px !default;
+$breakpoint-xl: 1200px !default;
+$breakpoint-xxl: 1400px !default;
 
 
 $mobile-breakpoint: $breakpoint-md;
