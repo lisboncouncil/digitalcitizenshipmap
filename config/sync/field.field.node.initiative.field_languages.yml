@@ -1,16 +1,16 @@
-uuid: da6319a0-85cb-4c5e-a526-723d65667e6e
+uuid: 49c52282-88f2-4f12-9337-354cd6dd7e68
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_target_audience
+    - field.storage.node.field_languages
     - node.type.initiative
-    - taxonomy.vocabulary.audiences
-id: node.initiative.field_target_audience
-field_name: field_target_audience
+    - taxonomy.vocabulary.languages
+id: node.initiative.field_languages
+field_name: field_languages
 entity_type: node
 bundle: initiative
-label: 'Target audience'
+label: Languages
 description: ''
 required: false
 translatable: false
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      audiences: audiences
+      languages: languages
     sort:
       field: name
       direction: asc

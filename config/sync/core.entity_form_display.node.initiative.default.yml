@@ -4,13 +4,18 @@ status: true
 dependencies:
   config:
     - field.field.node.initiative.body
+    - field.field.node.initiative.field_contact_information
     - field.field.node.initiative.field_country
-    - field.field.node.initiative.field_email
     - field.field.node.initiative.field_image
-    - field.field.node.initiative.field_lead_orga_or_person
+    - field.field.node.initiative.field_initiator_consortium
+    - field.field.node.initiative.field_languages
+    - field.field.node.initiative.field_location_description
+    - field.field.node.initiative.field_milestones
     - field.field.node.initiative.field_pillar
+    - field.field.node.initiative.field_project_kick_off
     - field.field.node.initiative.field_target_audience
     - field.field.node.initiative.field_target_beneficiaries
+    - field.field.node.initiative.field_timeline_is_ongoing
     - field.field.node.initiative.field_type_of_initiative
     - field.field.node.initiative.field_url
     - field.field.node.initiative.field_why
@@ -19,6 +24,7 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
+    - datetime
     - link
     - path
     - select_or_other
@@ -31,7 +37,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 2
+    weight: 1
     region: content
     settings:
       rows: 9
@@ -41,101 +47,137 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_country:
-    type: select_or_other_reference
-    weight: 7
-    region: content
-    settings:
-      select_element_type: select_or_other_buttons
-      sort_options: ''
-    third_party_settings: {  }
-  field_image:
-    type: image_image
-    weight: 4
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-  field_lead_orga_or_person:
-    type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_pillar:
-    type: options_buttons
-    weight: 8
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_target_beneficiaries:
-    type: string_textfield
-    weight: 4
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_type_of_initiative:
-    type: select_or_other_reference
-    weight: 6
-    region: content
-    settings:
-      select_element_type: select_or_other_buttons
-      sort_options: ''
-    third_party_settings: {  }
-  field_url:
-    type: link_default
-    weight: 5
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_why:
+  field_contact_information:
     type: text_textarea
-    weight: 3
+    weight: 12
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_country:
+    type: select_or_other_reference
+    weight: 9
+    region: content
+    settings:
+      select_element_type: select_or_other_buttons
+      sort_options: ''
+      other_placeholder: ''
+      other_option: ''
+      other_field_label: ''
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 13
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_initiator_consortium:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_languages:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_location_description:
+    type: string_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_milestones:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_pillar:
+    type: options_buttons
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_project_kick_off:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_target_audience:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_timeline_is_ongoing:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_url:
+    type: link_default
+    weight: 11
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 15
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 13
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 11
+    weight: 16
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 14
+    weight: 19
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 12
+    weight: 17
     region: content
     settings:
       display_label: true
@@ -150,7 +192,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 9
+    weight: 14
     region: content
     settings:
       match_operator: CONTAINS
@@ -159,7 +201,8 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
-  field_email: true
-  field_target_audience: true
+  field_target_beneficiaries: true
+  field_type_of_initiative: true
+  field_why: true
   publish_on: true
   unpublish_on: true

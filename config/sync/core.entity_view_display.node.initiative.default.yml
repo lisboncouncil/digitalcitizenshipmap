@@ -4,19 +4,25 @@ status: true
 dependencies:
   config:
     - field.field.node.initiative.body
+    - field.field.node.initiative.field_contact_information
     - field.field.node.initiative.field_country
-    - field.field.node.initiative.field_email
     - field.field.node.initiative.field_image
-    - field.field.node.initiative.field_lead_orga_or_person
+    - field.field.node.initiative.field_initiator_consortium
+    - field.field.node.initiative.field_languages
+    - field.field.node.initiative.field_location_description
+    - field.field.node.initiative.field_milestones
     - field.field.node.initiative.field_pillar
+    - field.field.node.initiative.field_project_kick_off
     - field.field.node.initiative.field_target_audience
     - field.field.node.initiative.field_target_beneficiaries
+    - field.field.node.initiative.field_timeline_is_ongoing
     - field.field.node.initiative.field_type_of_initiative
     - field.field.node.initiative.field_url
     - field.field.node.initiative.field_why
     - image.style.wide
     - node.type.initiative
   module:
+    - datetime
     - link
     - svg_image
     - text
@@ -38,6 +44,13 @@ content:
     third_party_settings: {  }
     weight: -20
     region: content
+  field_contact_information:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 18
+    region: content
   field_country:
     type: entity_reference_label
     label: above
@@ -45,13 +58,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 6
-    region: content
-  field_email:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 7
     region: content
   field_image:
     type: image
@@ -68,13 +74,35 @@ content:
     third_party_settings: {  }
     weight: -1
     region: content
-  field_lead_orga_or_person:
+  field_initiator_consortium:
     type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 10
+    weight: 16
+    region: content
+  field_languages:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_location_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_milestones:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
     region: content
   field_pillar:
     type: entity_reference_label
@@ -83,6 +111,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_project_kick_off:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 14
     region: content
   field_target_audience:
     type: entity_reference_label
@@ -99,6 +136,16 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 11
+    region: content
+  field_timeline_is_ongoing:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 15
     region: content
   field_type_of_initiative:
     type: entity_reference_label

@@ -1,0 +1,21 @@
+uuid: ed520d90-3606-4e87-9edd-1ec832d33ba8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_kick_off
+    - node.type.initiative
+  module:
+    - datetime
+id: node.initiative.field_project_kick_off
+field_name: field_project_kick_off
+entity_type: node
+bundle: initiative
+label: 'Project kick-off date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

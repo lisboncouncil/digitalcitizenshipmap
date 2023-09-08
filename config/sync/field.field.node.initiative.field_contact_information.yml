@@ -1,0 +1,24 @@
+uuid: a0319347-e4eb-4aef-bee5-c9ea19892c32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_information
+    - filter.format.basic_html
+    - node.type.initiative
+  module:
+    - text
+id: node.initiative.field_contact_information
+field_name: field_contact_information
+entity_type: node
+bundle: initiative
+label: 'Contact information'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

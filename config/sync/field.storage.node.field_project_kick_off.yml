@@ -1,18 +1,17 @@
-uuid: 33855c3d-344f-4016-a5f0-3db303b4e987
+uuid: 47826ede-3858-4615-90c5-b8c25dd25ec9
 langcode: en
 status: true
 dependencies:
   module:
+    - datetime
     - node
-id: node.field_lead_orga_or_person
-field_name: field_lead_orga_or_person
+id: node.field_project_kick_off
+field_name: field_project_kick_off
 entity_type: node
-type: string
+type: datetime
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
-module: core
+  datetime_type: date
+module: datetime
 locked: false
 cardinality: 1
 translatable: true

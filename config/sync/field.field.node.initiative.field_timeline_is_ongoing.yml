@@ -1,0 +1,21 @@
+uuid: e4e8f41b-2978-4690-a4a4-e442e85bd0ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_timeline_is_ongoing
+    - node.type.initiative
+id: node.initiative.field_timeline_is_ongoing
+field_name: field_timeline_is_ongoing
+entity_type: node
+bundle: initiative
+label: 'Timeline - is ongoing'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

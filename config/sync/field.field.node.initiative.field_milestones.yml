@@ -1,0 +1,24 @@
+uuid: 1d3b3769-0909-4c36-9e0e-796139391508
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_milestones
+    - filter.format.basic_html
+    - node.type.initiative
+  module:
+    - text
+id: node.initiative.field_milestones
+field_name: field_milestones
+entity_type: node
+bundle: initiative
+label: Milestones
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

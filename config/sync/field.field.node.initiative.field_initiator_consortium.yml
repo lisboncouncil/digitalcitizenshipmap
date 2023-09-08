@@ -1,15 +1,15 @@
-uuid: 2d5db0f6-34a8-4a57-8788-e32773389b7f
+uuid: 41c1e1fc-9619-417e-9c3e-0a00be0f7b70
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_lead_orga_or_person
+    - field.storage.node.field_initiator_consortium
     - node.type.initiative
-id: node.initiative.field_lead_orga_or_person
-field_name: field_lead_orga_or_person
+id: node.initiative.field_initiator_consortium
+field_name: field_initiator_consortium
 entity_type: node
 bundle: initiative
-label: 'Lead organisation or person'
+label: 'Initiator / Consortium'
 description: ''
 required: false
 translatable: false
