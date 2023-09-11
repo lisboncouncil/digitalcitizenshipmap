@@ -40,7 +40,7 @@
         "drupal/typed_data": "1.x-dev@dev",
         "drupal/upgrade_status": "^4.0",
         "drupal/xmlsitemap": "^1.4",
-        "drush/drush": "^12.1"
+        "drush/drush": "^12.2"
     },
     "conflict": {
         "drupal/drupal": "*"

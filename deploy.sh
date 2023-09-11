@@ -12,13 +12,13 @@ echo "Importing new libraries"
 composer install --no-dev
 
 echo "Updating Drupal database"
-drush updb -y
+./vendor/bin/drush updb -y
 
 echo "Importing drupal cash"
-drush cim -y
+./vendor/bin/drush cim -y
 
 echo "Clearing Drupal cache"
-drush cr
+./vendor/bin/drush cr
 
 echo "Deploy complete"
 
