@@ -29,7 +29,7 @@
     "build-rename": "npm run build-rename-js && npm run build-rename-css",
     "build-rename-js": "renamer --find '/main\\.[^\\.]+\\.js/i' --replace 'main.js' build/static/js/*.js",
     "build-rename-css": "renamer --find '/main\\.[^\\.]+\\.css/i' --replace 'main.css' build/static/css/*.css",
-    "move-build": "mv build/static/* ../web/modules/custom/citimap/assets/initiative-filter-dist"
+    "move-build": "cp -r build/static/* ../web/modules/custom/citimap/assets/initiative-filter-dist"
   },
   "eslintConfig": {
     "extends": [

@@ -1,7 +1,7 @@
 
 interface TaxonomyCountry{
+  id: number
   name: string
-  id: string
   initiatives_count: number
 }
 

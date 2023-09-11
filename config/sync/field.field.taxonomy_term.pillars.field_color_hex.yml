@@ -1,0 +1,19 @@
+uuid: 8045d0bc-c576-4880-890d-44675e749752
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_color_hex
+    - taxonomy.vocabulary.pillars
+id: taxonomy_term.pillars.field_color_hex
+field_name: field_color_hex
+entity_type: taxonomy_term
+bundle: pillars
+label: color_hex
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
