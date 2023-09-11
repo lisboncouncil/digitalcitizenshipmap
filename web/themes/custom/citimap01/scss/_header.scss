@@ -34,22 +34,28 @@ body.toolbar-horizontal {
 }
 
 body.scrolled {
-  header {
-    box-shadow: 1px 1px 3px gray;
-  }
+  header {}
 }
 
 
 header {
+  background-color: white;
+  padding-bottom: 0;
+
   .navbar {
-    .navbar-container{
+
+    .navbar-collapse {
+      margin-top: 1rem;
+    }
+
+    .navbar-container {
       padding-top: 2rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid $accent-shade;
     }
 
     .navbar-brand {
       display: flex;
+
       img {
         max-height: 50px;
       }
@@ -57,8 +63,6 @@ header {
 
 
     .nav-item {
-      margin-left: 1.25rem;
-      margin-right: 1.25rem;
 
       &:last-child {
         margin-right: 0px;
@@ -67,17 +71,20 @@ header {
       a.nav-link,
       span.nav-link {
         font-style: normal;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+        padding-left: 0.5rem;
         font-weight: 500;
         font-size: 0.8rem;
         line-height: 1rem;
         color: $accent-shade;
         text-transform: uppercase;
+
+      }
+      &:hover, &.active {
+        background-color: $accent-shade;
+        color: white;
         border-radius: 1rem;
 
-        &:hover{
-          background-color: $accent-shade;
+        a.nav-link, span.nav-link {
           color: white;
         }
       }
@@ -139,5 +146,27 @@ header {
         }
       }*/
 
+  }
+}
+
+
+@media screen and (min-width: $mobile-breakpoint) {
+  header {
+    .navbar {
+      .navbar-container {
+        border-bottom: 1px solid $accent-shade;
+
+        .nav-item {
+          margin-left: 1.25rem;
+          margin-right: 1.25rem;
+
+          a.nav-link,
+          span.nav-link {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+          }
+        }
+      }
+    }
   }
 }

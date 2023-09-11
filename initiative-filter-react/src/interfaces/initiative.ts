@@ -1,11 +1,9 @@
-import { UUID } from "crypto";
-
 interface Initiative{
-    uuid: UUID,
+    id: number,
     title: string,
     image: string,
     countries: string,
-    pillar: string
+    pillars: string
     status: string
 }
 
