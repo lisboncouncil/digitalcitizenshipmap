@@ -125,3 +125,4 @@ web/themes/custom/*/css/bootstrap.css
 config/sync/smtp.settings.yml
 web/google*
 composer.lock
+.lando*

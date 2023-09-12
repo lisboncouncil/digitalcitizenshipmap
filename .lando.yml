@@ -1,8 +1,0 @@
-name: digitalcitizenmap
-recipe: drupal10
-config:
-  webroot: web
-  php: '8.1'
-services:
-  myservice:
-    type: phpmyadmin
