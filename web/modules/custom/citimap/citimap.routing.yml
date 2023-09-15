@@ -1,0 +1,7 @@
+example.my_page:
+  path: '/about'
+  defaults:
+    _controller: '\Drupal\citimap\Controller\AboutController::page'
+    _title: 'About Page'
+  requirements:
+    _permission: 'access content'

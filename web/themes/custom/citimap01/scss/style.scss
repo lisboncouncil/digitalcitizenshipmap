@@ -73,6 +73,12 @@ h5 {
   background-color: rgba($accent-shade, 0.1);
 }
 
+.bg-fullwidth-primary {
+  background-color: $accent-shade;
+  box-shadow: 0px 0px 0px 100vmax $accent-shade;
+  clip-path: inset(0 -100vmax);
+  color: white;
+}
 
 .breadcrumb{
   display: flex;
