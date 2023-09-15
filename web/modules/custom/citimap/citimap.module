@@ -22,6 +22,11 @@ function citimap_theme() {
       'variables' => [
         'data' => []
       ]
+    ],
+    'contribute' => [
+      'variables' => [
+        'data' => []
+      ]
     ]
   ];
 }
