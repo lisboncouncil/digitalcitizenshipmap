@@ -11,6 +11,9 @@ dependencies:
     - field.storage.node.field_target_audience
     - field.storage.node.field_url
     - node.type.initiative
+    - taxonomy.vocabulary.audiences
+    - taxonomy.vocabulary.countries
+    - taxonomy.vocabulary.pillars
   module:
     - link
     - node
@@ -18,7 +21,6 @@ dependencies:
     - serialization
     - svg_image
     - taxonomy
-    - text
 id: initiatives
 label: Initiatives
 module: views
@@ -1184,6 +1186,159 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
+        field_pillar_target_id:
+          id: field_pillar_target_id
+          table: node__field_pillar
+          field: field_pillar_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_pillar_target_id_op
+            label: 'Pillar (field_pillar)'
+            description: ''
+            use_operator: false
+            operator: field_pillar_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: pillars
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              expert: '0'
+              content_editor: '0'
+              user_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: pillars
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_country_target_id:
+          id: field_country_target_id
+          table: node__field_country
+          field: field_country_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_country_target_id_op
+            label: 'Location (Europe only) (field_country)'
+            description: ''
+            use_operator: false
+            operator: field_country_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: countries
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              expert: '0'
+              content_editor: '0'
+              user_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: 'Location (Europe only) (field_country)'
+            description: null
+            identifier: field_country_target_id
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+          reduce_duplicates: true
+          vid: countries
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_target_audience_target_id:
+          id: field_target_audience_target_id
+          table: node__field_target_audience
+          field: field_target_audience_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_target_audience_target_id_op
+            label: 'Target audience (field_target_audience)'
+            description: ''
+            use_operator: false
+            operator: field_target_audience_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: audiences
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              expert: '0'
+              content_editor: '0'
+              user_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: audiences
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
       filter_groups:
         operator: AND
         groups:
@@ -1238,13 +1393,14 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - request_format
+        - url
+        - user
         - 'user.node_grants:view'
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_country'
         - 'config:field.storage.node.field_image'
         - 'config:field.storage.node.field_pillar'
-        - 'config:field.storage.node.field_target_audience'
   page_1:
     id: page_1
     display_title: Page
