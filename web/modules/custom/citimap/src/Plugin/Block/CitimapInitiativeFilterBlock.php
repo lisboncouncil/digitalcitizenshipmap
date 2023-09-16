@@ -21,7 +21,7 @@ class CitimapInitiativeFilterBlock extends BlockBase {
    */
   public function build(): array {
     return [
-      '#theme' => 'blocks/citimap_initiative_filter',
+      '#theme' => 'citimap_initiative_filter',
       '#attached' => array(
         'library' => array(
           'citimap/initiative-filter-react',

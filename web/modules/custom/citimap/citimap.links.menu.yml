@@ -1,0 +1,12 @@
+citimap.about:
+  title: 'About'
+  description: 'About'
+  parent: main
+  menu_name: main
+  route_name: citimap.about
+citimap.contribute:
+  title: 'Contribute'
+  description: 'Contribute'
+  parent: main
+  menu_name: main
+  route_name: citimap.contribute

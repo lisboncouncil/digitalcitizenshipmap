@@ -20,7 +20,7 @@ final class CitimapHeaderBlock extends BlockBase {
    */
   public function build(): array {
     return [
-      '#theme' => 'blocks/citimap_header'
+      '#theme' => 'citimap_header'
     ];
   }
 

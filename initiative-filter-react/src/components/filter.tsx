@@ -6,90 +6,38 @@ function Filter() {
 
   const getIcon = () => isOpen ? "▲" : "▼"
 
-  const fetchCountries = useInitiativesStore((state) => state.fetchCountries)
-  const fetchPillars = useInitiativesStore((state) => state.fetchPillars)
-  const fetchAudiences = useInitiativesStore((state) => state.fetchAudiences)
-  
-  const fetchInitiatives = useInitiativesStore((state) => state.fetchInitiatives)
-  
+  const fetchData = useInitiativesStore((state) => state.fetchData)
+  const updateInitiativesMap = useInitiativesStore((state) => state.updateInitiativesMap)
+
   const taxonomyCountries = useInitiativesStore((state) => state.taxonomyCountries)
   const taxonomyPillars = useInitiativesStore((state) => state.taxonomyPillars)
   const taxonomyAudiences = useInitiativesStore((state) => state.taxonomyAudiences)
 
   const filterPillars = useInitiativesStore((state) => state.filterPillars)
-  const filterPillarsCheck = useInitiativesStore((state) => state.filterByPillar_check)
-  const filterPillarsAdd = useInitiativesStore((state) => state.filterByPillar_add)
-  const filterPillarsRemove = useInitiativesStore((state) => state.filterByPillar_remove)
-  const filterPillarsClear = useInitiativesStore((state) => state.filterByPillar_clear)
-
   const filterCountries = useInitiativesStore((state) => state.filterCountries)
-  const filterCountriesCheck = useInitiativesStore((state) => state.filterByCountry_check)
-  const filterCountriesAdd = useInitiativesStore((state) => state.filterByCountry_add)
-  const filterCountriesRemove = useInitiativesStore((state) => state.filterByCountry_remove)
-  const filterCountriesClear = useInitiativesStore((state) => state.filterByCountry_clear)
-
   const filterAudiences = useInitiativesStore((state) => state.filterAudiences)
-  const filterAudiencesCheck = useInitiativesStore((state) => state.filterByAudience_check)
-  const filterAudiencesAdd = useInitiativesStore((state) => state.filterByAudience_add)
-  const filterAudiencesRemove = useInitiativesStore((state) => state.filterByAudience_remove)
-  const filterAudiencesClear = useInitiativesStore((state) => state.filterByAudience_clear)
 
-  const clearPillars = () => {
-    filterPillarsClear()
-    fetchInitiatives()
-  }
+  const clearPillars = useInitiativesStore((state) => state.clearPillars)
+  const clearCountries = useInitiativesStore((state) => state.clearCountries)
+  const clearAudiences = useInitiativesStore((state) => state.clearAudiences)
 
-  const clearCountries = () => {
-    filterCountriesClear()
-    fetchInitiatives()
-  }
+  const togglePillar = useInitiativesStore((state) => state.togglePillar)
+  const toggleCountry = useInitiativesStore((state) => state.toggleCountry)
+  const toggleAudience = useInitiativesStore((state) => state.toggleAudience)
 
-  const clearAudiences = () => {
-    filterAudiencesClear()
-    fetchInitiatives()
-  }
+  const checkPillar = useInitiativesStore((state) => state.checkPillar)
+  const checkCountry = useInitiativesStore((state) => state.checkCountry)
+  const checkAudience = useInitiativesStore((state) => state.checkAudience)
 
-  const onPillarClick = (pillarId: number) => {
-    console.log("Pillar click", pillarId)
-    if (filterPillarsCheck(pillarId)) {
-      filterPillarsRemove(pillarId)
-    } else {
-      filterPillarsAdd(pillarId)
-    }
-    fetchInitiatives()
-  }
-
-  const onCountryClick = (countryId: number) => {
-    console.log("Country click", countryId)
-    if (filterCountriesCheck(countryId)) {
-      filterCountriesRemove(countryId)
-    }
-    else {
-      filterCountriesAdd(countryId)
-    }
-    fetchInitiatives()
-  }
-
-  const onAudienceClick = (audienceId: number) => {
-    console.log("Audience click", audienceId)
-    if (filterAudiencesCheck(audienceId)) {
-      filterAudiencesRemove(audienceId)
-    }
-    else {
-      filterAudiencesAdd(audienceId)
-    }
-    fetchInitiatives()
-  }
 
   useEffect(() => {
     (async () => {
-      await fetchCountries()
-      await fetchPillars()
-      await fetchAudiences()
+      await fetchData()
+      updateInitiativesMap()
     })()
-  }, [fetchCountries, fetchPillars])
+  }, [fetchData])
 
-  
+
   return (
     <div id="initiatives-filter" className="mb-4">
       {!isOpen &&
@@ -106,10 +54,10 @@ function Filter() {
             <button
               id={`pillar-${pillar.id}`}
               key={`pillar-${pillar.id}`}
-              onClick={() => onPillarClick(pillar.id)}
-              className={`ifr-button inverted ms-2 mt-2 ${filterPillarsCheck(pillar.id) ? "active" : ""}`}
-              style={filterPillarsCheck(pillar.id) && pillar.field_color_hex ? { backgroundColor: pillar.field_color_hex, borderColor: pillar.field_color_hex, color: "white"} : {}}>
-                {pillar.name}
+              onClick={() => togglePillar(pillar.id)}
+              className={`ifr-button inverted ms-2 mt-2 ${checkPillar(pillar.id) ? "active" : ""}`}
+              style={checkPillar(pillar.id) && pillar.field_color_hex ? { backgroundColor: pillar.field_color_hex, borderColor: pillar.field_color_hex, color: "white" } : {}}>
+              {pillar.name}
               <span className="ms-2 counter">({pillar.initiatives_count})</span>
             </button>
           )}
@@ -117,11 +65,20 @@ function Filter() {
         <div className="filter-open-container__countries">
           <button className={`ifr-button inverted ms-2 mt-2 ${filterCountries.length == 0 && "active"}`} onClick={clearCountries}>All countries</button>
 
-          {taxonomyCountries.map((country) => <button onClick={() => onCountryClick(country.id)} key={`country-${country.id}`} id={`country-${country.id}`} className={`ifr-button inverted ms-2 mt-2 ${filterCountriesCheck(country.id) ? "active" : ""}`}>{country.name} <span className="counter">({country.initiatives_count})</span></button>)}
+          {taxonomyCountries.map((country) => 
+            <button onClick={() => toggleCountry(country.id)} 
+            key={`country-${country.id}`} id={`country-${country.id}`} 
+            className={`ifr-button inverted ms-2 mt-2 ${checkCountry(country.id) ? "active" : ""}`}>
+              {country.name} <span className="counter">({country.initiatives_count})</span></button>)}
         </div>
         <div className="filter-open-container__audiences">
-          <button className={`ifr-button inverted ms-2 mt-2 ${filterAudiences.length == 0 && "active"}`} onClick={clearAudiences}>All pillars</button>
-          {taxonomyAudiences.map((audience) => <button key={`audience-${audience.id}`} id={`audience-${audience.id}`} onClick={() => onAudienceClick(audience.id)} className={`ifr-button inverted ms-2 mt-2 ${filterAudiencesCheck(audience.id) ? "active" : ""}`}>{audience.name} <span className="counter">({audience.initiatives_count})</span></button>)}
+          <button className={`ifr-button inverted ms-2 mt-2 ${filterAudiences.length == 0 && "active"}`} onClick={clearAudiences}>All audiences</button>
+          {taxonomyAudiences.map((audience) =>
+            <button key={`audience-${audience.id}`}
+              id={`audience-${audience.id}`}
+              onClick={() => toggleAudience(audience.id)}
+              className={`ifr-button inverted ms-2 mt-2 ${checkAudience(audience.id) ? "active" : ""}`}>
+              {audience.name} <span className="counter">({audience.initiatives_count})</span></button>)}
         </div>
       </div>
 

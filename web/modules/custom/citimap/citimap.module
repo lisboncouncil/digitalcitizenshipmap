@@ -8,16 +8,26 @@
 
 function citimap_theme() {
   return [
-    'blocks/citimap_header' => [
+    'citimap_header' => [
       'variables' => [
         'data' => []
       ],
     ],
-    'blocks/citimap_initiative_filter' => [
+    'citimap_initiative_filter' => [
       'variables' => [
         'data' => []
       ],
     ],
+    'about' => [
+      'variables' => [
+        'data' => []
+      ]
+    ],
+    'contribute' => [
+      'variables' => [
+        'data' => []
+      ]
+    ]
   ];
 }
 

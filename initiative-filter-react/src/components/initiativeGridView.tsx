@@ -5,18 +5,21 @@ import Initiative from "../interfaces/initiative";
 function InitiativeGridView({ initiatives }: { initiatives: Initiative[] }) {
 
   const pillars = useInitiativesStore((state) => state.taxonomyPillars)
-  
+  const countries = useInitiativesStore((state) => state.taxonomyCountries)
+
   return (
     <div className="initiatives-container-grid">
       {initiatives.map((initiative) => {
         return (
-          <div key={initiative.id} className="initiative-item">
-            <div className="initiative-item__image">
-              <img className="rounded" src={initiative.image} alt={initiative.title} />
-            </div>
+          <div key={`initiative-${initiative.id}`} className="initiative-item">
+            <a className="initiative-item__link" href={initiative.url}>
+              <div className="initiative-item__image">
+                <img className="rounded" src={initiative.image} alt={initiative.title} />
+              </div>
+            </a>
             <div className="initiative-item__pillars">
-              {initiative.pillars.split(",").map((pillarId) => {
-                const pillar = pillars.find((p) => p.id == parseInt(pillarId))
+              {initiative.pillars.map((pillarId) => {
+                const pillar = pillars.find((p) => p.id == pillarId)
                 if (!pillar) return <></>
                 return (<button
                   id={`pillar-${pillar.id}`}
@@ -28,8 +31,10 @@ function InitiativeGridView({ initiatives }: { initiatives: Initiative[] }) {
                 )
               })}
             </div>
-            <div className="initiative-item__countries mt-2">{initiative.countries}</div>
-            <div className="initiative-item__name">{initiative.title}</div>
+            <div className="initiative-item__countries mt-2">{initiative.countries.map(x => countries.find(c => c.id == x)?.name).join(", ")}</div>
+            <a className="initiative-item__link" href={initiative.url}>
+              <div className="initiative-item__name">{initiative.title}</div>
+            </a>
           </div>
         )
       })}

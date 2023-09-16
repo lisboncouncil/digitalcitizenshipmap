@@ -1,0 +1,127 @@
+@import '../variables';
+
+.node--type-initiative {
+
+  //&.node--view-mode-full {
+
+  .field--name-field-country {
+    text-align: center;
+
+    .field__item {
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-transform: uppercase;
+
+      &:not(:first-child) {
+        margin-left: 2rem;
+      }
+    }
+  }
+
+  .field--name-field-image {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+
+    img {
+      border-radius: 1rem;
+      max-width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: contain;
+    }
+  }
+
+  .field--name-field-pillar {
+    display: flex;
+    justify-content: center;
+
+    .field__item {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      padding: 0.25rem 1.25rem;
+      border-radius: 1rem;
+      background-color: #5CAB80;
+      color: white;
+    }
+  }
+
+  .field--name-field-initiator-consortium,
+  .field--name-field-project-kick-off {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    text-align: center;
+
+    .field__item {
+      margin-top: 1rem;
+      font-weight: 500;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .field--name-field-timeline-is-ongoing {
+    display: none;
+  }
+
+  .field--name-body {
+    margin-top: 2rem;
+    border-bottom: 1px solid $accent-shade;
+
+    p {
+      margin-top: 2rem;
+      max-width: 700px;
+      text-align: center;
+      margin: auto;
+    }
+  }
+
+  .field--name-field-target-audience,
+  .field--name-field-target-beneficiaries {
+    text-align: center;
+    .field__label{
+      margin-top: 2rem;
+      color: $accent-shade;
+    }
+    .field__item,
+    .field__item a,
+    .field__item span {
+      color: $accent-shade;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .field--name-field-milestones{
+    text-align: center;
+    margin-top: 1rem;
+    .field__label{
+      margin-top: 2rem;
+      color: $accent-shade;
+    }
+
+    .field__items{
+      display: grid;
+      column-gap: 1.25rem;
+      row-gap: 1.25rem;
+      grid-template-columns: repeat(1, 1fr);
+      
+      .field__item{
+        color: $accent-shade;
+        margin-top: 0.5rem;
+        font-weight: 500;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+      }
+    }
+
+
+  }
+}
+
+@media screen and (min-width: $mobile-breakpoint) {
+  .node--type-initiative .field--name-field-milestones .field__items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

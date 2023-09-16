@@ -1,8 +1,9 @@
-uuid: b3784751-96b4-4e45-8545-6a74bbad3958
+uuid: a3eab221-e9ee-4cab-9ed6-f8d78125d99e
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.initiative.body
     - field.field.node.initiative.field_contact_information
     - field.field.node.initiative.field_country
@@ -22,9 +23,10 @@ dependencies:
     - image.style.wide
     - node.type.initiative
   module:
+    - advanced_text_formatter
     - datetime
     - ds
-    - link
+    - field_group
     - svg_image
     - text
     - user
@@ -39,55 +41,98 @@ third_party_settings:
         label: ''
     regions:
       content:
-        - field_image
-        - content_moderation_control
-        - field_pillar
-        - field_url
-        - links
-        - body
-        - field_why
         - field_country
-        - field_type_of_initiative
+        - field_pillar
+        - field_image
+        - group_row
+        - body
+        - field_initiator_consortium
         - field_target_audience
         - field_target_beneficiaries
-        - field_location_description
         - field_milestones
         - field_project_kick_off
+        - group_col_6_2
         - field_timeline_is_ongoing
+        - group_col_6
+  field_group:
+    group_row:
+      children:
+        - group_col_6_2
+        - group_col_6
+      label: Row
+      parent_name: ''
+      region: content
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: 'row bg-fullwidth-primary'
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_col_6:
+      children:
+        - field_project_kick_off
+        - field_timeline_is_ongoing
+      label: Col-6
+      parent_name: group_row
+      region: content
+      weight: 10
+      format_type: html_element
+      format_settings:
+        classes: 'col-lg-6 col-12'
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_col_6_2:
+      children:
         - field_initiator_consortium
-        - field_languages
-        - field_contact_information
-id: node.initiative.default
+      label: Col-6
+      parent_name: group_row
+      region: content
+      weight: 9
+      format_type: html_element
+      format_settings:
+        classes: 'col-lg-6 col-12'
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: node.initiative.full
 targetEntityType: node
 bundle: initiative
-mode: default
+mode: full
 content:
   body:
     type: text_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 5
-    region: content
-  content_moderation_control:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  field_contact_information:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 17
+    weight: 4
     region: content
   field_country:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 7
+    weight: 0
     region: content
   field_image:
     type: image
@@ -102,7 +147,7 @@ content:
         height: null
       svg_render_as_image: true
     third_party_settings: {  }
-    weight: 0
+    weight: 2
     region: content
   field_initiator_consortium:
     type: string
@@ -110,46 +155,43 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 15
-    region: content
-  field_languages:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 16
-    region: content
-  field_location_description:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 11
+    weight: 5
     region: content
   field_milestones:
-    type: text_default
+    type: advanced_text
     label: above
-    settings: {  }
+    settings:
+      trim_length: 600
+      ellipsis: 1
+      word_boundary: 1
+      token_replace: 0
+      filter: input
+      format: plain_text
+      allowed_html: '<a> <b> <br> <dd> <dl> <dt> <em> <i> <li> <ol> <p> <strong> <u> <ul>'
+      autop: 0
+      use_summary: 0
+      link_to_entity: false
     third_party_settings: {  }
-    weight: 12
+    weight: 7
     region: content
   field_pillar:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
-    weight: 2
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    weight: 1
     region: content
   field_project_kick_off:
     type: datetime_default
     label: above
     settings:
       timezone_override: ''
-      format_type: medium
+      format_type: olivero_medium
     third_party_settings: {  }
-    weight: 13
+    weight: 8
     region: content
   field_target_audience:
     type: entity_reference_label
@@ -157,7 +199,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 9
+    weight: 5
     region: content
   field_target_beneficiaries:
     type: string
@@ -165,48 +207,24 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 10
+    weight: 6
     region: content
   field_timeline_is_ongoing:
     type: boolean
-    label: above
+    label: hidden
     settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
+      format: custom
+      format_custom_false: CONCLUDED
+      format_custom_true: 'STILL ACTIVE'
     third_party_settings: {  }
-    weight: 14
+    weight: 9
     region: content
-  field_type_of_initiative:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 8
-    region: content
-  field_url:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 3
-    region: content
-  field_why:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 6
-    region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 4
-    region: content
-hidden: {  }
+hidden:
+  content_moderation_control: true
+  field_contact_information: true
+  field_languages: true
+  field_location_description: true
+  field_type_of_initiative: true
+  field_url: true
+  field_why: true
+  links: true

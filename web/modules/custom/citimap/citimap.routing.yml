@@ -1,0 +1,14 @@
+citimap.about:
+  path: '/about'
+  defaults:
+    _controller: '\Drupal\citimap\Controller\AboutController::page'
+    _title: 'About'
+  requirements:
+    _permission: 'access content'
+citimap.contribute:
+  path: '/contribute'
+  defaults:
+    _controller: '\Drupal\citimap\Controller\ContributeController::page'
+    _title: 'Contribute'
+  requirements:
+    _permission: 'access content'
