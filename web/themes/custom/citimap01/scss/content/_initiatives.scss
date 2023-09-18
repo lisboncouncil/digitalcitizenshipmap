@@ -24,6 +24,11 @@
     margin-bottom: 1rem;
 
     img {
+      max-width: 600px;
+      border-radius: 16px;
+      margin: auto;
+      max-height: 400px;
+      display: block;
       border-radius: 1rem;
       max-width: 100%;
       aspect-ratio: 16/9;
@@ -65,6 +70,7 @@
 
   .field--name-body {
     margin-top: 2rem;
+    margin-bottom: 1rem;
     border-bottom: 1px solid $accent-shade;
 
     p {
@@ -102,10 +108,9 @@
     }
 
     .field__items{
-      display: grid;
-      column-gap: 1.25rem;
-      row-gap: 1.25rem;
-      grid-template-columns: repeat(1, 1fr);
+      display: flex;
+      flex: 1 1 33%;
+      justify-content: center;
       
       .field__item{
         color: $accent-shade;
@@ -113,6 +118,7 @@
         font-weight: 500;
         font-size: 1.5rem;
         text-transform: uppercase;
+
       }
     }
 
@@ -122,6 +128,5 @@
 
 @media screen and (min-width: $mobile-breakpoint) {
   .node--type-initiative .field--name-field-milestones .field__items {
-    grid-template-columns: repeat(3, 1fr);
   }
 }

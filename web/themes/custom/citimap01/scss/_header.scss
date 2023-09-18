@@ -49,8 +49,8 @@ header {
     }
 
     .navbar-container {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
     }
 
     .navbar-brand {
@@ -155,7 +155,9 @@ header {
     .navbar {
       .navbar-container {
         border-bottom: 1px solid $accent-shade;
-
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        
         .nav-item {
           margin-left: 1.25rem;
           margin-right: 1.25rem;

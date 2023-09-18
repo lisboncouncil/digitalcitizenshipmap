@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -30,3 +31,35 @@ function citimap01_form_system_theme_settings_alter(&$form, FormStateInterface $
     'bg-transparent' => t('Transparent'),
   );
 }
+
+
+
+function generate_taxonomy_css() {
+  // Load taxonomy terms.
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term')
+    ->loadTree('pillars');
+
+  $term_entities = Term::loadMultiple(array_column($terms, 'tid'));
+
+  $css_content = '';
+
+  foreach ($term_entities as $term) {
+
+
+      $term_id = $term->id();
+      if($term->get('field_color_hex')->first() != null) {
+        $color_hex = $term->get('field_color_hex')->first()->getValue()['value'];
+        if($color_hex != null && $color_hex != "") {
+          $css_content .= ".pillar-bg-{$term_id} { background-color: {$color_hex} !important; }\n";
+        }
+      }
+  }
+
+  return $css_content;
+}
+
+function citimap01_preprocess(&$variables) {
+  $variables['pillars_css'] = generate_taxonomy_css();
+}
+
