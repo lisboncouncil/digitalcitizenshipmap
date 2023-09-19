@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.taxonomy_term.pillars.field_color_hex
     - field.field.taxonomy_term.pillars.field_pillar_id
+    - field.field.taxonomy_term.pillars.field_short_label
     - taxonomy.vocabulary.pillars
   module:
     - path
@@ -35,6 +36,14 @@ content:
     weight: 2
     region: content
     settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_short_label:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   name:

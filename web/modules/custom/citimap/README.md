@@ -1,30 +1,45 @@
-## INTRODUCTION
 
-The citimap module is a DESCRIBE_THE_MODULE_HERE.
+# Digital Citizenship Map
 
-The primary use case for this module is:
+The project is built using Drupal 10 and ReactJS.
 
-- Use case #1
-- Use case #2
-- Use case #3
+ReactJS manages the dynamic filter section in the homepage and it is rendered automatically using a Drupal Block.
 
-## REQUIREMENTS
+## React Application
 
-DESCRIBE_MODULE_DEPENDENCIES_HERE
+React section it is inside initiative-filter-react folder.
 
-## INSTALLATION
+### Installation
 
-Install as you would normally install a contributed Drupal module.
-See: https://www.drupal.org/node/895232 for further information.
+- npm install
 
-## CONFIGURATION
-- Configuration step #1
-- Configuration step #2
-- Configuration step #3
+### Configuration in Development
 
-## MAINTAINERS
+Change the library dependency in Drupal 10 module 
 
-Current maintainers for Drupal 10:
+/web/modules/custom/citimap/src/Plugin/Block/CitimapInitiativeFilterBlock.php
 
-- FIRST_NAME LAST_NAME (NICKNAME) - https://www.drupal.org/u/NICKNAME
 
+
+
+        'library' => array(
+          'citimap/initiative-filter-react-dev',
+        )
+
+
+Start react development server
+        
+        npm Start
+
+### Before to deploy to production
+
+Update /web/modules/custom/citimap/src/Plugin/Block/CitimapInitiativeFilterBlock.php  removing dev
+
+
+        'library' => array(
+          'citimap/initiative-filter-react',
+        )
+
+Make a react build, the code will be automatically copied to Drupal module folder
+
+        npm run build
