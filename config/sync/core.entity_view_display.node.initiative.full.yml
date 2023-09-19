@@ -24,7 +24,6 @@ dependencies:
     - node.type.initiative
   module:
     - advanced_text_formatter
-    - datetime
     - ds
     - field_group
     - svg_image
@@ -43,6 +42,7 @@ third_party_settings:
       content:
         - field_country
         - field_pillar
+        - 'dynamic_token_field:node-project_kickoff'
         - field_image
         - group_row
         - body
@@ -50,10 +50,14 @@ third_party_settings:
         - field_target_audience
         - field_target_beneficiaries
         - field_milestones
-        - field_project_kick_off
         - group_col_6_2
-        - field_timeline_is_ongoing
         - group_col_6
+    fields:
+      'dynamic_token_field:node-project_kickoff':
+        plugin_id: 'dynamic_token_field:node-project_kickoff'
+        weight: 1
+        label: above
+        formatter: default
   field_group:
     group_row:
       children:
@@ -77,8 +81,8 @@ third_party_settings:
         speed: fast
     group_col_6:
       children:
-        - field_project_kick_off
-        - field_timeline_is_ongoing
+        - 'dynamic_token_field:node-project_kickoff'
+        - 'dynamic_twig_field:node-project_kickoff_info'
       label: Col-6
       parent_name: group_row
       region: content
@@ -130,8 +134,16 @@ content:
     type: entity_reference_label
     label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
     weight: 0
     region: content
   field_image:
@@ -172,7 +184,7 @@ content:
       use_summary: 0
       link_to_entity: false
     third_party_settings: {  }
-    weight: 7
+    weight: 8
     region: content
   field_pillar:
     type: entity_reference_label
@@ -182,16 +194,13 @@ content:
     third_party_settings:
       ds:
         ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
     weight: 1
-    region: content
-  field_project_kick_off:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: olivero_medium
-    third_party_settings: {  }
-    weight: 8
     region: content
   field_target_audience:
     type: entity_reference_label
@@ -209,21 +218,13 @@ content:
     third_party_settings: {  }
     weight: 6
     region: content
-  field_timeline_is_ongoing:
-    type: boolean
-    label: hidden
-    settings:
-      format: custom
-      format_custom_false: CONCLUDED
-      format_custom_true: 'STILL ACTIVE'
-    third_party_settings: {  }
-    weight: 9
-    region: content
 hidden:
   content_moderation_control: true
   field_contact_information: true
   field_languages: true
   field_location_description: true
+  field_project_kick_off: true
+  field_timeline_is_ongoing: true
   field_type_of_initiative: true
   field_url: true
   field_why: true

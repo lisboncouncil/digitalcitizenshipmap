@@ -1,5 +1,8 @@
 @import '../variables';
 
+
+
+
 .node--type-initiative {
 
   //&.node--view-mode-full {
@@ -12,6 +15,7 @@
       font-size: 1.5rem;
       font-weight: 500;
       text-transform: uppercase;
+      color: $accent-shade;
 
       &:not(:first-child) {
         margin-left: 2rem;
@@ -56,16 +60,24 @@
   }
 
   .field--name-field-initiator-consortium,
-  .field--name-field-project-kick-off {
+  .field--name-field-project-kick-off,
+  .field--name-dynamic-twig-fieldnode-project-kickoff-info,
+  .field--name-dynamic-token-fieldnode-project-kickoff {
     padding-top: 3rem;
     padding-bottom: 3rem;
     text-align: center;
+    color: white;
 
     .field__item {
       margin-top: 1rem;
       font-weight: 500;
       font-size: 1.5rem;
       text-transform: uppercase;
+      color: white;
+
+      a, p, span{
+        color: white;
+      }
     }
   }
 
@@ -132,6 +144,8 @@
   }
 }
 
+
+
 @media screen and (min-width: $mobile-breakpoint) {
   .node--type-initiative {
 
@@ -160,9 +174,15 @@
 
   .field--name-field-milestones{
     .field__items {
-      display: flex;
-      flex: 1 1 33% !important;
+      display: flex !important;
       justify-content: center !important;
+      flex-wrap: wrap !important;
+      
+      .field__item{
+        padding: 1rem;
+        flex: 1 1 33% !important;
+        max-width: 50%;
+      }
     }
   }
 }

@@ -1,0 +1,11 @@
+id: project_kickoff
+label: ' Kick-off / Timeline'
+ui_limit: ''
+type: token
+type_label: 'Token field'
+entities:
+  node: node
+properties:
+  content:
+    value: '<p>STARTED IN [node:field_project_kick_off:date:html_year] / [node:field_timeline_is_ongoing]</p>'
+    format: basic_html

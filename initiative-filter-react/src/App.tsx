@@ -1,4 +1,3 @@
-import React from 'react';
 import InitiativesManager from './InitiativesManager';
 
 function App() {

@@ -6,6 +6,8 @@ import TaxonomyCountry from '../interfaces/taxonomyCountry'
 import TaxonomyPillar from '../interfaces/taxonomyPillar'
 import TaxonomyAudience from '../interfaces/taxonomyAudience'
 
+export type SortBy = "DATE" | "NAME"
+
 const initiativesUrl = "/api/initiatives"
 const countriesUrl = "/api/taxonomy/countries"
 const pillarsUrl = "/api/taxonomy/pillars"
@@ -16,13 +18,19 @@ export interface InitiativeState {
   initiativesCountriesMap: {[key: number]: Initiative[]},
   initiativesPillarsMap: {[key: number]: Initiative[]},
   initiativesAudiencesMap: {[key: number]: Initiative[]},
+  sortBy: SortBy,
+
+  updateSortBy: (sortBy: SortBy) => void,
 
   initiativesFiltered: () => Initiative[],
-  updateInitiativesMap: () => void,
+  updateInitiativesCountMap: () => void,
 
   taxonomyCountries:  TaxonomyCountry[],
   taxonomyPillars:  TaxonomyPillar[],
   taxonomyAudiences:  TaxonomyAudience[],
+
+  saveFiltersConfig: () => void,
+  loadFiltersConfig: () => void,
 
   fetchData: () => Promise<void>
 
@@ -51,7 +59,7 @@ export interface InitiativeState {
 }
 
 
-const useInitiativesStore = create<InitiativeState>((set, get) => ({
+const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, get) => ({
   initiatives: [] as Initiative[],
   initiativesCountriesMap: {} as {[key: number]: Initiative[]},
   initiativesPillarsMap: {} as {[key: number]: Initiative[]},
@@ -61,21 +69,51 @@ const useInitiativesStore = create<InitiativeState>((set, get) => ({
   taxonomyPillars: [] as TaxonomyPillar[],
   taxonomyAudiences: [] as TaxonomyAudience[],
   
+  sortBy: "DATE",
+  updateSortBy: (sortBy: SortBy) => {
+    if(sortBy !== get().sortBy)
+      set({sortBy})
+  },
+
+  saveFiltersConfig: () => {
+    const filterData = {
+      filterPillars: get().filterPillars,
+      filterCountries: get().filterCountries,
+      filterAudiences: get().filterAudiences
+    }
+    localStorage.setItem("filterPillars", JSON.stringify(filterData))
+  },
+  loadFiltersConfig: () => {
+    const filtersData = localStorage.getItem("filterPillars")
+    console.log("filtersData", filtersData)
+    if(filtersData) {
+      const filters = JSON.parse(filtersData)
+      set({
+        filterPillars: filters.filterPillars || [],
+        filterCountries: filters.filterCountries || [],
+        filterAudiences: filters.filterAudiences || []
+      })
+    }
+  },
+
   fetchData: async () => {
     await Promise.all([
       get().fetchInitiatives(),
       get().fetchCountries(),
       get().fetchPillars(),
-      get().fetchAudiences()
+      get().fetchAudiences(),
     ])
+    get().updateInitiativesCountMap()
   },
 
-  updateInitiativesMap: () => {
+  updateInitiativesCountMap: () => {
     const initiativesCountriesMap = {} as {[key: number]: Initiative[]}
     const initiativesPillarsMap = {} as {[key: number]: Initiative[]}
     const initiativesAudiencesMap = {} as {[key: number]: Initiative[]}
 
-    get().initiatives.forEach(initiative => {
+    const initiatives = get().initiativesFiltered()
+
+    initiatives.forEach(initiative => {
       initiative.countries.forEach(countryId => {
         if (!initiativesCountriesMap[countryId]) {
           initiativesCountriesMap[countryId] = []
@@ -102,8 +140,7 @@ const useInitiativesStore = create<InitiativeState>((set, get) => ({
   initiativesFiltered: () => {
     const arrayContainAll = (array: number[], search: number[]) => search.every(x => array.includes(x))
 
-    return get().initiatives.filter(initiative => {
-      console.log("CHECK PILLARS", get().filterPillars)
+    const initiatives = get().initiatives.filter(initiative => {
       
       if(get().filterCountries.length > 0 && !arrayContainAll(initiative.countries, get().filterCountries)) {
         return false
@@ -115,6 +152,13 @@ const useInitiativesStore = create<InitiativeState>((set, get) => ({
         return false
       }
       return true
+    })
+    return initiatives.sort((a, b) => {
+      if (get().sortBy === "DATE") {
+        return b.created_at.getTime() - a.created_at.getTime()
+      } else {
+        return a.title.localeCompare(b.title)
+      }
     })
   },
 
@@ -130,7 +174,8 @@ const useInitiativesStore = create<InitiativeState>((set, get) => ({
         audiences: [],
         status: response.status,
         url: response.url,
-        description: response.description
+        description: response.description,
+        created_at: new Date(response.created_at.replace(/\n/g, "").trim())
       }
       
       if(Boolean(response.countries)) {
@@ -141,9 +186,10 @@ const useInitiativesStore = create<InitiativeState>((set, get) => ({
         initiative.pillars = response.pillars.split(",").map((pillar: string) => parseInt(pillar))
       }
 
-      if(Boolean(response.audience)) {
+      if(Boolean(response.audiences)) {
         initiative.audiences = response.audiences.split(",").map((audience: string) => parseInt(audience))
       }
+
       return initiative
     })
     set({initiatives}, false)
@@ -192,9 +238,11 @@ const useInitiativesStore = create<InitiativeState>((set, get) => ({
     } else {
       set(state => ({filterPillars: [...state.filterPillars, id]}))
     }
+    get().updateInitiativesCountMap()
   },
   clearPillars: () => {
     set({filterPillars: []})
+    get().updateInitiativesCountMap()
   },
   checkPillar: (id: number) => {
     return get().filterPillars.includes(id)
@@ -209,9 +257,11 @@ const useInitiativesStore = create<InitiativeState>((set, get) => ({
     } else {
       set(state => ({filterCountries: [...state.filterCountries, id]}))
     }
+    get().updateInitiativesCountMap()
   },
   clearCountries: () => {
     set({filterCountries: []})
+    get().updateInitiativesCountMap()
   },
   checkCountry: (id: number) => {
     return get().filterCountries.includes(id)
@@ -225,13 +275,24 @@ const useInitiativesStore = create<InitiativeState>((set, get) => ({
     } else {
       set(state => ({filterAudiences: [...state.filterAudiences, id]}))
     }
+    get().updateInitiativesCountMap()
   },
   clearAudiences: () => {
     set({filterAudiences: []})
+    get().updateInitiativesCountMap()
   },
   checkAudience: (id: number) => {
     return get().filterAudiences.includes(id)
   }
-}))
+})))
+
+
+/*const audienceSub = useInitiativesStore.subscribe((state) => state.filterAudiences, () => {
+  useInitiativesStore.getState().updateInitiativesCountMap()
+  console.log("Audiences changed, updated local storage")
+})*/
+
+
 
 export default useInitiativesStore
+
