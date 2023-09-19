@@ -95,6 +95,9 @@
       {% block content %}
         <div id="main" class="{{ container }}">
           <div class="breadcrumb">{{ breadcrumb }}</div>
+          <style type="text/css" id="pillars-css">
+            {{ pillars_css }}
+          </style>
           <div class="row row-offcanvas row-offcanvas-left clearfix">
               <main{{ content_attributes }}>
                 <section class="section">

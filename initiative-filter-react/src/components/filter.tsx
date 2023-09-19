@@ -55,8 +55,7 @@ function Filter() {
               id={`pillar-${pillar.id}`}
               key={`pillar-${pillar.id}`}
               onClick={() => togglePillar(pillar.id)}
-              className={`ifr-button inverted ms-2 mt-2 ${checkPillar(pillar.id) ? "active" : ""}`}
-              style={checkPillar(pillar.id) && pillar.field_color_hex ? { backgroundColor: pillar.field_color_hex, borderColor: pillar.field_color_hex, color: "white" } : {}}>
+              className={`ifr-button inverted ms-2 mt-2 ${checkPillar(pillar.id) ? "active" : ""} pillar-bg-${pillar.id}`}>
               {pillar.name}
               <span className="ms-2 counter">({pillar.initiatives_count})</span>
             </button>

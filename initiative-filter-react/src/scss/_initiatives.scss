@@ -11,20 +11,28 @@
     color: $primary;
 
     .initiative-item__name {
-      font-size: 1.5rem;
+      margin-top: 0.25rem;
+      font-size: 1.25rem;
       font-weight: 500;
+      letter-spacing: -1px;
     }
 
     .initiative-item__countries {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 500;
       text-transform: uppercase;
+      letter-spacing: -1px;
+
     }
 
     .initiative-item__image img {
       max-width: 100%;
       aspect-ratio: 16/9;
       object-fit: contain;
+    }
+
+    .initiative-item__pillars{
+      text-align: left;
     }
   }
 }
@@ -91,7 +99,7 @@
 
     &.expanded {
       padding: 1rem 5rem 1rem 1rem;
-      max-height: 250px;
+      max-height: 2000px;
       background-color: $primary;
     }
   }
