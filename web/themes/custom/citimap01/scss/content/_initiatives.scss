@@ -24,29 +24,34 @@
     margin-bottom: 1rem;
 
     img {
-      max-width: 600px;
-      border-radius: 16px;
+      max-width: 100% !important;
+    }
+
+    img {
+      border-radius: 16px !important;
+      width: auto;
       margin: auto;
       max-height: 400px;
       display: block;
       border-radius: 1rem;
-      max-width: 100%;
       aspect-ratio: 16/9;
       object-fit: contain;
     }
   }
 
   .field--name-field-pillar {
-    display: flex;
+    display: block;
     justify-content: center;
 
     .field__item {
+      margin-top: 1rem;
       margin-left: 1rem;
       margin-right: 1rem;
       padding: 0.25rem 1.25rem;
       border-radius: 1rem;
       background-color: #5CAB80;
       color: white;
+      text-align: center;
     }
   }
 
@@ -69,8 +74,8 @@
   }
 
   .field--name-body {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid $accent-shade;
 
     p {
@@ -84,10 +89,12 @@
   .field--name-field-target-audience,
   .field--name-field-target-beneficiaries {
     text-align: center;
-    .field__label{
+
+    .field__label {
       margin-top: 2rem;
       color: $accent-shade;
     }
+
     .field__item,
     .field__item a,
     .field__item span {
@@ -99,20 +106,19 @@
     }
   }
 
-  .field--name-field-milestones{
+  .field--name-field-milestones {
     text-align: center;
     margin-top: 1rem;
-    .field__label{
+
+    .field__label {
       margin-top: 2rem;
       color: $accent-shade;
     }
 
-    .field__items{
-      display: flex;
-      flex: 1 1 33%;
-      justify-content: center;
-      
-      .field__item{
+    .field__items {
+      display: block;
+
+      .field__item {
         color: $accent-shade;
         margin-top: 0.5rem;
         font-weight: 500;
@@ -127,6 +133,37 @@
 }
 
 @media screen and (min-width: $mobile-breakpoint) {
-  .node--type-initiative .field--name-field-milestones .field__items {
+  .node--type-initiative {
+
+    .field--name-field-image {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      
+      img {
+        max-width: 600px !important;
+      }
+    }
+    .field--name-field-country {
+
+      .field__item {
+
+        &:not(:first-child) {
+          margin-left: 2rem;
+        }
+      }
+    }
+
+    .field--name-field-pillar {
+      display: flex;
+    }
+  }
+
+  .field--name-field-milestones{
+    .field__items {
+      display: flex;
+      flex: 1 1 33% !important;
+      justify-content: center !important;
+    }
   }
 }
+

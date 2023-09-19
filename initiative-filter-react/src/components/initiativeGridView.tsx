@@ -28,8 +28,8 @@ function InitiativeGridView({ initiatives }: { initiatives: Initiative[] }) {
                 return (<button
                   id={`pillar-${pillar.id}`}
                   key={`pillar-${pillar.id}`}
-                  className={`ifr-button small inverted mt-2 pillar-bg-${pillar.id}`}
-                  >{pillar.name.slice(0, 5)}
+                  className={`ifr-button small inverted mt-2 pillar-bg pillar-bg-${pillar.id}`}
+                  >{pillar.short_label || pillar.name}
                 </button>
                 )
               })}

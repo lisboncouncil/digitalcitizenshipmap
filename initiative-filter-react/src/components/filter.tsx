@@ -55,7 +55,7 @@ function Filter() {
               id={`pillar-${pillar.id}`}
               key={`pillar-${pillar.id}`}
               onClick={() => togglePillar(pillar.id)}
-              className={`ifr-button inverted ms-2 mt-2 ${checkPillar(pillar.id) ? "active" : ""} pillar-bg-${pillar.id}`}>
+              className={`ifr-button inverted ms-2 mt-2 ${checkPillar(pillar.id) ? "active" : ""} pillar-bg pillar-bg-${pillar.id}`}>
               {pillar.name}
               <span className="ms-2 counter">({pillar.initiatives_count})</span>
             </button>

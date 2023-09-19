@@ -166,7 +166,8 @@ const useInitiativesStore = create<InitiativeState>((set, get) => ({
         id: parseInt(response.id),
         name: response.name,
         field_color_hex: response.field_color_hex,
-        initiatives_count: parseInt(response.initiatives_count)
+        initiatives_count: parseInt(response.initiatives_count),
+        short_label: response.short_label
       }
     })
     set({taxonomyPillars: json}, false)  
