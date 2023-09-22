@@ -153,6 +153,8 @@ header {
 @media screen and (min-width: $mobile-breakpoint) {
   header {
     .navbar {
+      //padding-bottom: none;
+
       .navbar-container {
         border-bottom: 1px solid $accent-shade;
         padding-top: 2rem;

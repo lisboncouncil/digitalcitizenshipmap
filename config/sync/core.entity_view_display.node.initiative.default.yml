@@ -171,9 +171,9 @@ content:
     type: boolean
     label: above
     settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
+      format: custom
+      format_custom_false: CLOSED
+      format_custom_true: 'STILL ONGOING'
     third_party_settings: {  }
     weight: 14
     region: content

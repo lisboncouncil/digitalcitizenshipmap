@@ -1,0 +1,9 @@
+id: project_kickoff_info
+label: 'Project KickOff Info'
+ui_limit: ''
+type: twig
+type_label: 'Twig field'
+entities:
+  node: node
+properties:
+  content: "PROJECT KICKOFF INFO {% if node.field_project_kick_off is not empty %}\r\n  {{ content.field_project_kick_off }}\r\n{% endif %}\r\n\r\n{{ node.field_project_kick_off }}\r\n{{ node.field_timeline_is_ongoing }}\r\n"

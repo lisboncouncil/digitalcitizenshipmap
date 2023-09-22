@@ -11,7 +11,7 @@ function InitiativeGridView({ initiatives }: { initiatives: Initiative[] }) {
     <div className="initiatives-container-grid">
       {initiatives.map((initiative) => {
         return (
-          <div key={`initiative-${initiative.id}`} className="initiative-item">
+          <div key={`initiative-${initiative.id}`} id={initiative.created_at.toString()} className="initiative-item">
             <a className="initiative-item__link" href={initiative.url}>
               <div className="initiative-item__image">
                 <img className="rounded" src={initiative.image} alt={initiative.title} />
@@ -21,10 +21,10 @@ function InitiativeGridView({ initiatives }: { initiatives: Initiative[] }) {
               <a className="initiative-item__link" href={initiative.url}>
                 <div className="initiative-item__name">{initiative.title}</div>
               </a>
-              <div className="initiative-item__countries mt-2">{initiative.countries.map(x => countries.find(c => c.id == x)?.name).join(", ")}</div>
+              <div className="initiative-item__countries mt-2">{initiative.countries.map(x => countries.find(c => c.id === x)?.name).join(", ")}</div>
               <div className="initiative-item__pillars">{initiative.pillars.map((pillarId) => {
-                const pillar = pillars.find((p) => p.id == pillarId)
-                if (!pillar) return <></>
+                const pillar = pillars.find((p) => p.id === pillarId)
+                if (!pillar) return null
                 return (<button
                   id={`pillar-${pillar.id}`}
                   key={`pillar-${pillar.id}`}

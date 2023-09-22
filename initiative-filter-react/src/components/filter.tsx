@@ -7,7 +7,7 @@ function Filter() {
   const getIcon = () => isOpen ? "▲" : "▼"
 
   const fetchData = useInitiativesStore((state) => state.fetchData)
-  const updateInitiativesMap = useInitiativesStore((state) => state.updateInitiativesMap)
+  //const loadFiltersConfig = useInitiativesStore((state) => state.loadFiltersConfig)
 
   const taxonomyCountries = useInitiativesStore((state) => state.taxonomyCountries)
   const taxonomyPillars = useInitiativesStore((state) => state.taxonomyPillars)
@@ -29,14 +29,22 @@ function Filter() {
   const checkCountry = useInitiativesStore((state) => state.checkCountry)
   const checkAudience = useInitiativesStore((state) => state.checkAudience)
 
+  const initiativesCountriesMap = useInitiativesStore((state) => state.initiativesCountriesMap)
+  const initiativesPillarsMap = useInitiativesStore((state) => state.initiativesPillarsMap)
+  const initiativesAudiencesMap = useInitiativesStore((state) => state.initiativesAudiencesMap)
+
+  const initiatives = useInitiativesStore((state) => state.initiativesFiltered())
 
   useEffect(() => {
-    (async () => {
+    const initializeData = (async () => {
+      console.log("calling fetch data")
+      //loadFiltersConfig()
       await fetchData()
-      updateInitiativesMap()
-    })()
-  }, [fetchData])
+    })
 
+    initializeData()
+  }, [fetchData])
+  
 
   return (
     <div id="initiatives-filter" className="mb-4">
@@ -49,7 +57,9 @@ function Filter() {
           Close &times;
         </div>
         <div className="filter-open-container__pillars">
-          <button className={`ifr-button inverted ms-2 mt-2 ${filterPillars.length == 0 && "active"}`} onClick={clearPillars}>All pillars</button>
+          <button className={`ifr-button inverted ms-2 mt-2 ${filterPillars.length === 0 && "active"}`} onClick={clearPillars}>
+            All pillars <span className="ms-2 counter">({initiatives?.length || "0"})</span>
+          </button>
           {taxonomyPillars.map((pillar) =>
             <button
               id={`pillar-${pillar.id}`}
@@ -57,30 +67,39 @@ function Filter() {
               onClick={() => togglePillar(pillar.id)}
               className={`ifr-button inverted ms-2 mt-2 ${checkPillar(pillar.id) ? "active" : ""} pillar-bg pillar-bg-${pillar.id}`}>
               {pillar.name}
-              <span className="ms-2 counter">({pillar.initiatives_count})</span>
+              <span className="ms-2 counter">({initiativesPillarsMap[pillar.id]?.length || "0"})</span>
             </button>
           )}
         </div>
         <div className="filter-open-container__countries">
-          <button className={`ifr-button inverted ms-2 mt-2 ${filterCountries.length == 0 && "active"}`} onClick={clearCountries}>All countries</button>
-
+          <button className={`ifr-button inverted ms-2 mt-2 ${filterCountries.length === 0 && "active"}`} onClick={clearCountries}>
+            All countries
+            <span className="ms-2 counter">({initiatives?.length || "0"})</span>
+          </button>
           {taxonomyCountries.map((country) => 
             <button onClick={() => toggleCountry(country.id)} 
             key={`country-${country.id}`} id={`country-${country.id}`} 
             className={`ifr-button inverted ms-2 mt-2 ${checkCountry(country.id) ? "active" : ""}`}>
-              {country.name} <span className="counter">({country.initiatives_count})</span></button>)}
+              {country.name} 
+              <span className="ms-2 counter">({initiativesCountriesMap[country.id]?.length || "0"})</span>
+            </button>
+          )}
         </div>
         <div className="filter-open-container__audiences">
-          <button className={`ifr-button inverted ms-2 mt-2 ${filterAudiences.length == 0 && "active"}`} onClick={clearAudiences}>All audiences</button>
+          <button className={`ifr-button inverted ms-2 mt-2 ${filterAudiences.length === 0 && "active"}`} onClick={clearAudiences}>
+            All audiences <span className="ms-2 counter">({initiatives?.length || "0"})</span>
+          </button>
           {taxonomyAudiences.map((audience) =>
             <button key={`audience-${audience.id}`}
               id={`audience-${audience.id}`}
               onClick={() => toggleAudience(audience.id)}
               className={`ifr-button inverted ms-2 mt-2 ${checkAudience(audience.id) ? "active" : ""}`}>
-              {audience.name} <span className="counter">({audience.initiatives_count})</span></button>)}
+              {audience.name} 
+              <span className="ms-2 counter">({initiativesAudiencesMap[audience.id]?.length || "0"})</span>
+            </button>
+            )}
         </div>
       </div>
-
     </div>
   )
 }
