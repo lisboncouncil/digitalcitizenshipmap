@@ -31,6 +31,8 @@
       object-fit: contain;
       max-height: 140px;
       height: 140px;
+      border: 1px solid $primary;
+      padding: 1rem;
     }
 
     .initiative-item__pillars{

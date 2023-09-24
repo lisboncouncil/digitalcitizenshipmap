@@ -1,4 +1,4 @@
-uuid: 005e984c-42db-4aeb-aac8-b71b87b1d9c6
+uuid: 8bcfe5e8-fdc2-4a55-a899-f1e7009747e2
 langcode: en
 status: true
 dependencies:
@@ -6,12 +6,10 @@ dependencies:
     - system
   theme:
     - citimap01
-_core:
-  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
 id: citimap01_breadcrumbs
 theme: citimap01
 region: breadcrumb
-weight: 0
+weight: -6
 provider: null
 plugin: system_breadcrumb_block
 settings:

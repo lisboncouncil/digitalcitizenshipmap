@@ -1,7 +1,7 @@
 _core:
   default_config_hash: LYs_s2QdJ4ivdf6ERxvWa1ZRSKecbSoLKA85NkzrSkw
 region_blocks: {  }
-fields_extra: false
+fields_extra: true
 fields_extra_list: {  }
 field_permissions: false
 switch_field: false

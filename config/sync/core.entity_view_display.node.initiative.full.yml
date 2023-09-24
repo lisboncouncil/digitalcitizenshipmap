@@ -23,9 +23,9 @@ dependencies:
     - image.style.wide
     - node.type.initiative
   module:
-    - advanced_text_formatter
     - ds
     - field_group
+    - link
     - svg_image
     - text
     - user
@@ -44,15 +44,22 @@ third_party_settings:
         - field_pillar
         - 'dynamic_token_field:node-project_kickoff'
         - field_image
+        - field_url
         - group_row
-        - body
         - field_initiator_consortium
+        - body
         - field_target_audience
         - field_target_beneficiaries
         - field_milestones
         - group_col_6_2
+        - 'dynamic_twig_field:node-project_kickoff_info'
         - group_col_6
     fields:
+      'dynamic_twig_field:node-project_kickoff_info':
+        plugin_id: 'dynamic_twig_field:node-project_kickoff_info'
+        weight: 9
+        label: hidden
+        formatter: default
       'dynamic_token_field:node-project_kickoff':
         plugin_id: 'dynamic_token_field:node-project_kickoff'
         weight: 1
@@ -66,10 +73,10 @@ third_party_settings:
       label: Row
       parent_name: ''
       region: content
-      weight: 3
+      weight: 4
       format_type: html_element
       format_settings:
-        classes: 'row bg-fullwidth-primary'
+        classes: 'row bg-fullwidth-primary mt-5'
         show_empty_fields: false
         id: ''
         element: div
@@ -82,7 +89,6 @@ third_party_settings:
     group_col_6:
       children:
         - 'dynamic_token_field:node-project_kickoff'
-        - 'dynamic_twig_field:node-project_kickoff_info'
       label: Col-6
       parent_name: group_row
       region: content
@@ -127,8 +133,15 @@ content:
     type: text_default
     label: hidden
     settings: {  }
-    third_party_settings: {  }
-    weight: 4
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 5
     region: content
   field_country:
     type: entity_reference_label
@@ -170,19 +183,10 @@ content:
     weight: 5
     region: content
   field_milestones:
-    type: advanced_text
+    type: text_trimmed
     label: above
     settings:
       trim_length: 600
-      ellipsis: 1
-      word_boundary: 1
-      token_replace: 0
-      filter: input
-      format: plain_text
-      allowed_html: '<a> <b> <br> <dd> <dl> <dt> <em> <i> <li> <ol> <p> <strong> <u> <ul>'
-      autop: 0
-      use_summary: 0
-      link_to_entity: false
     third_party_settings: {  }
     weight: 8
     region: content
@@ -208,7 +212,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 5
+    weight: 6
     region: content
   field_target_beneficiaries:
     type: string
@@ -216,7 +220,26 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 6
+    weight: 7
+    region: content
+  field_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: nofollow
+      target: _blank
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 3
     region: content
 hidden:
   content_moderation_control: true
@@ -226,6 +249,5 @@ hidden:
   field_project_kick_off: true
   field_timeline_is_ongoing: true
   field_type_of_initiative: true
-  field_url: true
   field_why: true
   links: true

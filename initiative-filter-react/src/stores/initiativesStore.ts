@@ -19,6 +19,10 @@ export interface InitiativeState {
   initiativesPillarsMap: {[key: number]: Initiative[]},
   initiativesAudiencesMap: {[key: number]: Initiative[]},
   sortBy: SortBy,
+  
+  searchInput: string,
+  updateSearchInput: (searchInput: string) => void,
+  
 
   updateSortBy: (sortBy: SortBy) => void,
 
@@ -59,6 +63,8 @@ export interface InitiativeState {
 }
 
 
+
+
 const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, get) => ({
   initiatives: [] as Initiative[],
   initiativesCountriesMap: {} as {[key: number]: Initiative[]},
@@ -70,6 +76,13 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
   taxonomyAudiences: [] as TaxonomyAudience[],
   
   sortBy: "DATE",
+
+  searchInput: "",
+  updateSearchInput: (searchInput: string) => {
+    if(searchInput !== get().searchInput)
+      set({searchInput})
+  },
+  
   updateSortBy: (sortBy: SortBy) => {
     if(sortBy !== get().sortBy)
       set({sortBy})
@@ -140,7 +153,7 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
   initiativesFiltered: () => {
     const arrayContainAll = (array: number[], search: number[]) => search.every(x => array.includes(x))
 
-    const initiatives = get().initiatives.filter(initiative => {
+     let initiatives = get().initiatives.filter(initiative => {
       
       if(get().filterCountries.length > 0 && !arrayContainAll(initiative.countries, get().filterCountries)) {
         return false
@@ -153,6 +166,13 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
       }
       return true
     })
+
+    if(get().searchInput.length > 0) {
+      initiatives = initiatives.filter(i => {
+        return i.title.toLowerCase().includes(get().searchInput.toLowerCase())
+      })
+    }
+
     return initiatives.sort((a, b) => {
       if (get().sortBy === "DATE") {
         return b.created_at.getTime() - a.created_at.getTime()

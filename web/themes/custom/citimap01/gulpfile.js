@@ -63,20 +63,21 @@ function styles () {
     .pipe(cleanCss())
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(paths.scss.dest))
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream({ port: 5000}))
 }
 
 // Move the javascript files into our js folder
 function js () {
   return gulp.src([paths.js.bootstrap, paths.js.popper, paths.js.barrio])
     .pipe(gulp.dest(paths.js.dest))
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream({ port: 5001}))
 }
 
 // Static Server + watching scss/html files
 function serve () {
   browserSync.init({
     proxy: 'https://www.drupal.org',
+    port: 5000,
   })
 
   gulp.watch([paths.scss.watch, paths.scss.bootstrap], styles).on('change', browserSync.reload)

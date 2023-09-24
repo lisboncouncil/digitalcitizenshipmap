@@ -1,0 +1,23 @@
+uuid: f43f56dc-544d-423e-81ad-ba6bdc5aa5b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: generic_content_structure
+label: 'Generic Content Structure'
+type: 'canonical_entities:node'
+pattern: '[node:content-type]/[node:title]'
+selection_criteria:
+  c56fd1d9-6c1b-4c85-b780-9a6f17a72a9f:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: c56fd1d9-6c1b-4c85-b780-9a6f17a72a9f
+    context_mapping:
+      node: node
+    bundles:
+      article: article
+      initiative: initiative
+selection_logic: and
+weight: -5
+relationships: {  }
