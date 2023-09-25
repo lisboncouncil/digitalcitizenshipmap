@@ -8,12 +8,97 @@ dependencies:
     - field.field.node.article.comment
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
-    - image.style.medium
+    - image.style.large
     - node.type.article
   module:
+    - ds
+    - field_group
     - svg_image
     - text
     - user
+third_party_settings:
+  field_group:
+    group_col_left:
+      children:
+        - comment
+      label: 'Col Left'
+      parent_name: ''
+      region: hidden
+      weight: 15
+      format_type: html_element
+      format_settings:
+        classes: 'col-12 col-lg-3'
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_co:
+      children: {  }
+      label: 'Col Right'
+      parent_name: ''
+      region: hidden
+      weight: 16
+      format_type: html_element
+      format_settings:
+        classes: 'col-12 col-md-9'
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+  ds:
+    layout:
+      id: barrio_col2-3-9
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      first:
+        - field_image
+      second:
+        - node_post_date
+        - node_title
+        - field_tags
+        - body
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 2
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          wrapper: h2
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+      node_post_date:
+        plugin_id: node_post_date
+        weight: 1
+        label: hidden
+        formatter: ds_post_date_olivero_medium
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
 _core:
   default_config_hash: 83jX5ChAGdMzOxiDA_B1NjgebVMuD8lNVDgClg_QVP8
 id: node.article.teaser
@@ -25,33 +110,48 @@ content:
     type: text_summary_or_trimmed
     label: hidden
     settings:
-      trim_length: 600
-    third_party_settings: {  }
-    weight: 0
-    region: content
+      trim_length: 300
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 4
+    region: second
   field_image:
     type: image
     label: hidden
     settings:
-      image_style: medium
       image_link: content
+      image_style: large
       image_loading:
         attribute: lazy
-    third_party_settings: {  }
-    weight: -1
-    region: content
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: first
   field_tags:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 10
-    region: content
-  links:
-    weight: 100
-    region: content
+    weight: 3
+    region: second
 hidden:
   comment: true
-  field_image: true
-  field_tags: true
+  links: true

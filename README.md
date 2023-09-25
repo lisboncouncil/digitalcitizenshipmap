@@ -7,39 +7,50 @@ ReactJS manages the dynamic filter section in the homepage and it is rendered au
 
 ## React Application
 
-React section it is inside initiative-filter-react folder.
+React code is inside the folder *initiative-filter-react* folder.
 
 ### Installation
 
+- cd initiative-filter-react
 - npm install
 
 ### Configuration in Development
 
-Change the library dependency in Drupal 10 module 
+1. Change the library dependency in Drupal 10 module. 
+This will allow to render in Drupal the development build instead of the final build
 
-/web/modules/custom/citimap/src/Plugin/Block/CitimapInitiativeFilterBlock.php
+*/web/modules/custom/citimap/src/Plugin/Block/CitimapInitiativeFilterBlock.php*
 
 
-
+You have to replace *initiative-filter-react* to *initiative-filter-react-dev*
 
         'library' => array(
           'citimap/initiative-filter-react-dev',
         )
 
 
-Start react development server
+2. Start react development server
         
-        npm Start
+        npm start
 
-### Before to deploy to production
+### Deploy a new build to production
 
-Update /web/modules/custom/citimap/src/Plugin/Block/CitimapInitiativeFilterBlock.php  removing dev
+Before to do any git push you have to build the react application locally.
 
+1.       npm run build
+
+2. Update /web/modules/custom/citimap/src/Plugin/Block/CitimapInitiativeFilterBlock.php  removing dev from the library dependency
 
         'library' => array(
           'citimap/initiative-filter-react',
         )
 
-Make a react build, the code will be automatically copied to Drupal module folder
+## Drupal 10
 
+### Compiling SCSS libraries
+
+The project uses SCSS libraries. To compile the SCSS files you have to run the following command:
+
+        cd web/themes/custom/citimap01
         npm run build
+        drush cr

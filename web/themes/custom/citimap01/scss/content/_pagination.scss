@@ -1,0 +1,15 @@
+@import '../variables';
+
+.citimap01-pagination{
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  .citimap01-page-item{
+    @include link-button(white, $accent-shade);
+    // Overriding Mixin properties
+    padding: 0;
+    & > a, & > span{
+      padding: 0.25rem 1.25rem;
+    }
+  }
+}

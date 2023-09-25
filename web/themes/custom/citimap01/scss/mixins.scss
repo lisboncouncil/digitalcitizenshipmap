@@ -1,7 +1,32 @@
-
-
 @mixin bg-fullwidth($color) {
-    background-color: $color;
-    box-shadow: 0px 0px 0px 100vmax $color;
-    clip-path: inset(0 -100vmax);
+  background-color: $color;
+  box-shadow: 0px 0px 0px 100vmax $color;
+  clip-path: inset(0 -100vmax);
+}
+
+
+
+@mixin link-button($color, $hover-color) {
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  padding: 0.25rem 1.25rem;
+  border-radius: 1rem;
+  background-color: $color;
+  color: $hover-color;
+  border: 1px solid $hover-color;
+  text-align: center;
+
+  span, a {
+    color: $hover-color;
+  }
+
+  &.active, &.is-active, &:hover {
+    background-color: $hover-color;
+    color: $color;
+    text-decoration: none;
+    span, a {
+      color: $color;
+    }
+  }
 }

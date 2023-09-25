@@ -47,7 +47,7 @@ function Filter() {
   
 
   return (
-    <div id="initiatives-filter" className="mb-4">
+    <div id="initiatives-filter" className="mb-lg-4 mb-3">
       {!isOpen &&
         <button className="ifr-button d-block w-100" onClick={() => setOpen(!isOpen)}>Filters {getIcon()}</button>
       }
@@ -60,15 +60,17 @@ function Filter() {
           <button className={`ifr-button inverted ms-2 mt-2 ${filterPillars.length === 0 && "active"}`} onClick={clearPillars}>
             All pillars <span className="ms-2 counter">({initiatives?.length || "0"})</span>
           </button>
-          {taxonomyPillars.map((pillar) =>
-            <button
-              id={`pillar-${pillar.id}`}
-              key={`pillar-${pillar.id}`}
-              onClick={() => togglePillar(pillar.id)}
-              className={`ifr-button inverted ms-2 mt-2 ${checkPillar(pillar.id) ? "active" : ""} pillar-bg pillar-bg-${pillar.id}`}>
-              {pillar.name}
-              <span className="ms-2 counter">({initiativesPillarsMap[pillar.id]?.length || "0"})</span>
-            </button>
+          {taxonomyPillars.map((pillar) => {
+            return (initiativesPillarsMap[pillar.id]?.length > 0 &&
+              <button
+                id={`pillar-${pillar.id}`}
+                key={`pillar-${pillar.id}`}
+                onClick={() => togglePillar(pillar.id)}
+                className={`ifr-button inverted ms-2 mt-2 ${checkPillar(pillar.id) ? "active" : ""} pillar-bg pillar-bg-${pillar.id}`}>
+                {pillar.name}
+                <span className="ms-2 counter">({initiativesPillarsMap[pillar.id]?.length || "0"})</span>
+              </button>
+            )}
           )}
         </div>
         <div className="filter-open-container__countries">
@@ -76,27 +78,31 @@ function Filter() {
             All countries
             <span className="ms-2 counter">({initiatives?.length || "0"})</span>
           </button>
-          {taxonomyCountries.map((country) => 
+          {taxonomyCountries.map((country) => {
+            return (initiativesCountriesMap[country.id]?.length > 0 &&
             <button onClick={() => toggleCountry(country.id)} 
             key={`country-${country.id}`} id={`country-${country.id}`} 
             className={`ifr-button inverted ms-2 mt-2 ${checkCountry(country.id) ? "active" : ""}`}>
               {country.name} 
               <span className="ms-2 counter">({initiativesCountriesMap[country.id]?.length || "0"})</span>
             </button>
+            )}
           )}
         </div>
         <div className="filter-open-container__audiences">
           <button className={`ifr-button inverted ms-2 mt-2 ${filterAudiences.length === 0 && "active"}`} onClick={clearAudiences}>
             All audiences <span className="ms-2 counter">({initiatives?.length || "0"})</span>
           </button>
-          {taxonomyAudiences.map((audience) =>
-            <button key={`audience-${audience.id}`}
-              id={`audience-${audience.id}`}
-              onClick={() => toggleAudience(audience.id)}
-              className={`ifr-button inverted ms-2 mt-2 ${checkAudience(audience.id) ? "active" : ""}`}>
-              {audience.name} 
-              <span className="ms-2 counter">({initiativesAudiencesMap[audience.id]?.length || "0"})</span>
-            </button>
+          {taxonomyAudiences.map((audience) => {
+              return (initiativesAudiencesMap[audience.id]?.length > 0 &&
+                <button key={`audience-${audience.id}`}
+                  id={`audience-${audience.id}`}
+                  onClick={() => toggleAudience(audience.id)}
+                  className={`ifr-button inverted ms-2 mt-2 ${checkAudience(audience.id) ? "active" : ""}`}>
+                  {audience.name} 
+                  <span className="ms-2 counter">({initiativesAudiencesMap[audience.id]?.length || "0"})</span>
+                </button>
+              )}
             )}
         </div>
       </div>

@@ -1,0 +1,80 @@
+@import '../variables';
+
+.view-blog {
+
+  .row {
+    margin-bottom: 2rem;
+  }
+
+  .field--name-node-post-date {
+    color: $accent-shade;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .field--name-node-title,
+  & h2,
+  & h3 {
+    font-size: 1.5rem;
+  }
+
+  .field--name-field-image {
+    img {
+      border-radius: 1rem;
+    }
+  }
+
+  .field--name-body {
+    border-bottom: 1px solid $accent-shade;
+  }
+
+}
+
+@media screen and (min-width: $tablet-breakpoint) {
+  .view-blog {
+
+    .field--name-field-image {
+      padding-right: 1.5rem;
+      margin-bottom: 0px;
+    }
+
+    .row {
+      margin-bottom: 2rem;
+    }
+  }
+
+}
+
+.node--type-article{ 
+  
+  .layout--onecol{
+    .field--name-node-post-date {
+      margin-top: 1rem;
+      color: $accent-shade;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+  
+    .field--name-field-image {
+      img {
+        margin: auto;
+        display: block;
+        border-radius: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .field--name-field-tags{
+      .field__items{
+        display: flex;
+        justify-content: center;
+      }
+    }
+    
+    .field--name-body{
+      margin-bottom: 3rem;
+    }
+  }
+}

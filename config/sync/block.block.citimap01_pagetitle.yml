@@ -9,7 +9,7 @@ dependencies:
 id: citimap01_pagetitle
 theme: citimap01
 region: featured_top
-weight: 0
+weight: -7
 provider: null
 plugin: page_title_block
 settings:

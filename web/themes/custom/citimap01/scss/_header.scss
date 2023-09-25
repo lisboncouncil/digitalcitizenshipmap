@@ -43,6 +43,7 @@ header {
   padding-bottom: 0;
 
   .navbar {
+    box-shadow: 0px -8px 20px 0px gray;
 
     .navbar-collapse {
       margin-top: 1rem;
@@ -79,13 +80,13 @@ header {
         text-transform: uppercase;
 
       }
-      &:hover, &.active {
+      &:hover, &.active, & .is-active {
         background-color: $accent-shade;
-        color: white;
+        color: white !important;
         border-radius: 1rem;
 
-        a.nav-link, span.nav-link {
-          color: white;
+        &, a, span {
+          color: white !important;
         }
       }
 
@@ -98,7 +99,7 @@ header {
             width: 100%;
             display: inline-block;
 
-            &.active,
+            &.active,&.is-active,
             &:active {
               color: $white;
             }
@@ -154,6 +155,7 @@ header {
   header {
     .navbar {
       //padding-bottom: none;
+      box-shadow: none;
 
       .navbar-container {
         border-bottom: 1px solid $accent-shade;

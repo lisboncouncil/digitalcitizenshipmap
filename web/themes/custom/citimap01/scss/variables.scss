@@ -44,7 +44,10 @@ $enable-responsive-font-sizes: true;
 $enable-shadows: false;
 $enable-gradients: false;
 // Breadcrumbs (Works only on Bootstrap 5+)
-$breadcrumb-divider: ">";
+
+
+// > is not compatible with current font ( transformed in arrow )
+$breadcrumb-divider: "›";  
 
 $table-border-width: 1px;
 

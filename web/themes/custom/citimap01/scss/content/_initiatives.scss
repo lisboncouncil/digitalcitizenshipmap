@@ -1,8 +1,5 @@
 @import '../variables';
 
-
-
-
 .node--type-initiative {
 
   //&.node--view-mode-full {
@@ -142,7 +139,25 @@
 
 
   }
+
+  .field--name-field-url.field__link{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+
+    & > a{
+      @include link-button(white, $accent-shade);
+      margin: auto;
+      display: block;
+      &::after{
+        content: "\f0c1";
+        font-family: "FontAwesome";
+      }
+    }
+  }
+
 }
+
 
 
 
