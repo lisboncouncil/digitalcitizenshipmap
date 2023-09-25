@@ -42,23 +42,26 @@
     font-family: 'Acumin Pro';
     font-style: normal;
     font-weight: normal;
-    src: local('Acumin Pro'), url('/themes/custom/citimap01/fonts/Acumin-RPro.woff') format('woff');
+    src: url('/themes/custom/citimap01/fonts/Acumin-RPro.woff') format('woff');
+    font-display: swap;
     }
     
 
-    @font-face {
+  @font-face {
     font-family: 'Acumin Pro';
     font-style: italic;
     font-weight: normal;
-    src: local('Acumin Pro Italic'), url('/themes/custom/citimap01/fonts/Acumin-ItPro.woff') format('woff');
-    }
+    src: url('/themes/custom/citimap01/fonts/Acumin-ItPro.woff') format('woff');
+    font-display: swap;
+  }
     
 
     @font-face {
     font-family: 'Acumin Pro';
     font-style: normal;
     font-weight: bold;
-    src: local('Acumin Pro Bold'), url('/themes/custom/citimap01/fonts/Acumin-BdPro.woff') format('woff');
+    src: url('/themes/custom/citimap01/fonts/Acumin-BdPro.woff') format('woff');
+    font-display: swap;
     }
     
 
@@ -66,5 +69,6 @@
     font-family: 'Acumin Pro';
     font-style: italic;
     font-weight: bold;
-    src: local('Acumin Pro Bold Italic'), url('/themes/custom/citimap01/fonts/Acumin-BdItPro.woff') format('woff');
-    }
+    src: url('/themes/custom/citimap01/fonts/Acumin-BdItPro.woff') format('woff');
+    font-display: swap;
+}
