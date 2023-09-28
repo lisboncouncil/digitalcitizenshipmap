@@ -127,9 +127,6 @@ $prefix: "ifr";
 }
 
 
-.pointer{
-  cursor: pointer;
-}
 
 .#{$prefix}-border-bottom {
   border-bottom: 1px solid $primary;
@@ -142,4 +139,9 @@ $prefix: "ifr";
 }
 .#{$prefix}-border-top {
   border-top: 1px solid $primary;
+}
+
+
+.cursor-pointer{
+  cursor: pointer;
 }

@@ -33,6 +33,10 @@ export interface InitiativeState {
   taxonomyPillars:  TaxonomyPillar[],
   taxonomyAudiences:  TaxonomyAudience[],
 
+  taxonomyCountriesMap: {[key: number]: TaxonomyCountry},
+  taxonomyPillarsMap: {[key: number]: TaxonomyPillar},
+  taxonomyAudiencesMap: {[key: number]: TaxonomyAudience},
+
   saveFiltersConfig: () => void,
   loadFiltersConfig: () => void,
 
@@ -75,6 +79,10 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
   taxonomyPillars: [] as TaxonomyPillar[],
   taxonomyAudiences: [] as TaxonomyAudience[],
   
+  taxonomyAudiencesMap: {} as {[key: number]: TaxonomyAudience},
+  taxonomyCountriesMap: {} as {[key: number]: TaxonomyCountry},
+  taxonomyPillarsMap: {} as {[key: number]: TaxonomyPillar},
+
   sortBy: "DATE",
 
   searchInput: "",
@@ -147,6 +155,8 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
       })
     })
 
+
+
     set({initiativesCountriesMap, initiativesPillarsMap, initiativesAudiencesMap}, false)
   },
 
@@ -216,7 +226,7 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
   },
   fetchCountries: async () => {
     const response: Response = await fetch(countriesUrl)
-    const taxonomyCountries = (await response.json()).map((response: any): TaxonomyCountry => {
+    const taxonomyCountries: TaxonomyCountry[] = (await response.json()).map((response: any): TaxonomyCountry => {
       return {
         id: parseInt(response.id),
         name: response.name,
@@ -225,10 +235,16 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
       }
     })
     set({taxonomyCountries}, false)  
+
+    const taxonomyCountriesMap = {} as {[key: number]: TaxonomyCountry}
+    taxonomyCountries.forEach(country => {
+      taxonomyCountriesMap[country.id] = country
+    })
+    set({taxonomyCountriesMap}, false)
   },
   fetchPillars: async () => {
     const response: Response = await fetch(pillarsUrl)
-    const json = (await response.json()).map((response: any): TaxonomyPillar => {
+    const json: TaxonomyPillar[] = (await response.json()).map((response: any): TaxonomyPillar => {
       return {
         id: parseInt(response.id),
         name: response.name,
@@ -238,17 +254,32 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
       }
     })
     set({taxonomyPillars: json}, false)  
+
+    const taxonomyPillarsMap = {} as {[key: number]: TaxonomyPillar}
+    json.forEach(pillar => {
+      taxonomyPillarsMap[pillar.id] = pillar
+    })
+    set({taxonomyPillarsMap}, false)
+    
   },
   fetchAudiences: async () => {
     const response: Response = await fetch(audiencesUrl)
-    const taxonomyAudiences = (await response.json()).map((response: any): TaxonomyAudience => {
+    const taxonomyAudiences: TaxonomyAudience[] = (await response.json()).map((response: any): TaxonomyAudience => {
       return {
         id: parseInt(response.id),
         name: response.name.replace(/&lt;/g, '<').replace(/&gt;/g, '>'),
         initiatives_count: parseInt(response.initiatives_count)
       }
     })
+    
     set({taxonomyAudiences}, false)
+    
+    const taxonomyAudiencesMap = {} as {[key: number]: TaxonomyAudience}
+    taxonomyAudiences.forEach(audience => {
+      taxonomyAudiencesMap[audience.id] = audience
+    })
+
+    set({taxonomyAudiencesMap}, false)
   },
 
   // FILTER PILLARS

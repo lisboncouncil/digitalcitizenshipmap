@@ -8,6 +8,8 @@ function InitiativeGridView({ initiatives }: { initiatives: Initiative[] }) {
   const countries = useInitiativesStore((state) => state.taxonomyCountries)
 
   return (
+    <>
+    {initiatives.length === 0 && <div className="text-center">No initiatives found</div>}
     <div className="initiatives-container-grid">
       {initiatives.map((initiative) => {
         return (
@@ -39,6 +41,7 @@ function InitiativeGridView({ initiatives }: { initiatives: Initiative[] }) {
         )
       })}
     </div>
+    </>
   )
 }
 
