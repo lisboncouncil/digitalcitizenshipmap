@@ -220,6 +220,7 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
       return {
         id: parseInt(response.id),
         name: response.name,
+        field_iso2: response.field_iso2,
         initiatives_count: parseInt(response.initiatives_count)
       }
     })

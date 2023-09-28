@@ -1,7 +1,7 @@
 @import "_variables";
 
 
-.initiatives-container-grid {
+.initiatives-container-grid, .initiatives-container-map-grid {
   display: grid;
   column-gap: 1.25rem;
   row-gap: 1.25rem;
@@ -81,6 +81,19 @@
 
 
 #initiatives-filter {
+
+  .filter-dropdown{
+
+    .filter-checkbox{
+      top: 50%;
+      margin-top: 0;
+      transform: translateY(-50%);
+    }
+  }
+
+
+
+
   .filter-open-container {
     max-height: 0;
     overflow: hidden;
@@ -120,6 +133,11 @@
   .initiatives-container-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .initiatives-container-map-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
 }
 
 @media screen and (min-width: $tablet-breakpoint) {

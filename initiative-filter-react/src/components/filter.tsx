@@ -48,62 +48,79 @@ function Filter() {
 
   return (
     <div id="initiatives-filter" className="mb-lg-4 mb-3">
-      {!isOpen &&
-        <button className="ifr-button d-block w-100" onClick={() => setOpen(!isOpen)}>Filters {getIcon()}</button>
-      }
+      
+      <div className="d-lg-flex justify-start items-center mb-5">
 
-      <div className={`filter-open-container ${isOpen ? 'expanded' : ''}`}>
-        <div className="filter-open-container__toggle" onClick={() => setOpen(!isOpen)}>
-          Close &times;
-        </div>
-        <div className="filter-open-container__pillars">
-          <button className={`ifr-button inverted ms-2 mt-2 ${filterPillars.length === 0 && "active"}`} onClick={clearPillars}>
-            All pillars <span className="ms-2 counter">({initiatives?.length || "0"})</span>
+        <div className="dropdown filter-dropdown filter-dropdown__pillars">
+          <button className="ifr-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              All pillars <span className="ms-2 counter">({initiatives?.length || "0"})</span>
           </button>
-          {taxonomyPillars.map((pillar) => {
-            return (initiativesPillarsMap[pillar.id]?.length > 0 &&
-              <button
-                id={`pillar-${pillar.id}`}
+          <ul className="dropdown-menu">
+            {taxonomyPillars.map((pillar) => {
+            return (
+              <li className="position-relative">
+                <a id={`pillar-${pillar.id}`}
                 key={`pillar-${pillar.id}`}
                 onClick={() => togglePillar(pillar.id)}
-                className={`ifr-button inverted ms-2 mt-2 ${checkPillar(pillar.id) ? "active" : ""} pillar-bg pillar-bg-${pillar.id}`}>
+                className={`dropdown-item pe-4 ${checkPillar(pillar.id) ? "active" : ""}`}>
                 {pillar.name}
-                <span className="ms-2 counter">({initiativesPillarsMap[pillar.id]?.length || "0"})</span>
-              </button>
+                <span className="ms-2 me-2  counter">({initiativesPillarsMap[pillar.id]?.length || "0"})</span>
+                <input onChange={(e) => {e.preventDefault(); e.stopPropagation();}}
+                className="position-absolute ms-2 me-2 end-0 filter-checkbox form-check-input" type="checkbox" checked={checkPillar(pillar.id)} 
+                key={`check-pillar-${pillar.id}`} id={`check-pillar-${pillar.id}`} />
+                </a>
+              </li>
             )}
           )}
+          </ul>
         </div>
-        <div className="filter-open-container__countries">
-          <button className={`ifr-button inverted ms-2 mt-2 ${filterCountries.length === 0 && "active"}`} onClick={clearCountries}>
-            All countries
-            <span className="ms-2 counter">({initiatives?.length || "0"})</span>
+
+        <div className="dropdown filter-dropdown filter-dropdown__countries ms-3">
+          <button className="ifr-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              All countries <span className="ms-2 counter">({initiatives?.length || "0"})</span>
           </button>
-          {taxonomyCountries.map((country) => {
-            return (initiativesCountriesMap[country.id]?.length > 0 &&
-            <button onClick={() => toggleCountry(country.id)} 
-            key={`country-${country.id}`} id={`country-${country.id}`} 
-            className={`ifr-button inverted ms-2 mt-2 ${checkCountry(country.id) ? "active" : ""}`}>
-              {country.name} 
-              <span className="ms-2 counter">({initiativesCountriesMap[country.id]?.length || "0"})</span>
-            </button>
+          <ul className="dropdown-menu" data-bs-auto-close="outside">
+            {taxonomyCountries.map((country) => {
+            return (
+              <li className="position-relative">
+                <a id={`country-${country.id}`}
+                key={`country-${country.id}`}
+                onClick={(e) => {e.preventDefault(); e.stopPropagation(); toggleCountry(country.id)}}
+                className={`dropdown-item pe-4`}>
+                {country.name}
+                <span className="ms-2 me-2 counter">({initiativesCountriesMap[country.id]?.length || "0"})</span>
+                <input onChange={(e) => {e.preventDefault(); e.stopPropagation();}}
+                className="position-absolute ms-2 me-2 end-0 filter-checkbox form-check-input" type="checkbox" checked={checkCountry(country.id)} 
+                key={`check-country-${country.id}`} id={`check-country-${country.id}`} />
+                </a>
+              </li>
             )}
           )}
+          </ul>
         </div>
-        <div className="filter-open-container__audiences">
-          <button className={`ifr-button inverted ms-2 mt-2 ${filterAudiences.length === 0 && "active"}`} onClick={clearAudiences}>
-            All audiences <span className="ms-2 counter">({initiatives?.length || "0"})</span>
+
+        <div className="dropdown filter-dropdown filter-dropdown__countries ms-3">
+          <button className="ifr-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              All audiences <span className="ms-2 counter">({initiatives?.length || "0"})</span>
           </button>
-          {taxonomyAudiences.map((audience) => {
-              return (initiativesAudiencesMap[audience.id]?.length > 0 &&
-                <button key={`audience-${audience.id}`}
-                  id={`audience-${audience.id}`}
-                  onClick={() => toggleAudience(audience.id)}
-                  className={`ifr-button inverted ms-2 mt-2 ${checkAudience(audience.id) ? "active" : ""}`}>
-                  {audience.name} 
-                  <span className="ms-2 counter">({initiativesAudiencesMap[audience.id]?.length || "0"})</span>
-                </button>
-              )}
+          <ul className="dropdown-menu">
+            {taxonomyAudiences.map((audience) => {
+            return (
+              <li className="position-relative">
+                <a id={`audience-${audience.id}`}
+                key={`audience-${audience.id}`}
+                onClick={(e) => {e.preventDefault(); e.stopPropagation(); toggleAudience(audience.id)}}
+                className={`dropdown-item pe-4`}>
+                {audience.name}
+                <span className="ms-2 me-2 counter">({initiativesAudiencesMap[audience.id]?.length || "0"})</span>
+                <input onChange={(e) => {e.preventDefault(); e.stopPropagation();}}
+                className="position-absolute ms-2 me-2 end-0 filter-checkbox form-check-input" type="checkbox" checked={checkAudience(audience.id)} 
+                key={`check-audience-${audience.id}`} id={`check-audience-${audience.id}`} />
+                </a>
+              </li>
             )}
+          )}
+          </ul>
         </div>
       </div>
     </div>
