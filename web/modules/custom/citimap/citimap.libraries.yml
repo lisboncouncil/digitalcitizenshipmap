@@ -10,3 +10,5 @@ initiative-filter-react:
 initiative-filter-react-dev:
   js:
     http://localhost:3000/static/js/bundle.js: {}
+  dependencies:
+    - citimap01/popperjs-core
