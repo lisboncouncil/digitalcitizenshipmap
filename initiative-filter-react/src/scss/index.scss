@@ -134,3 +134,12 @@ $prefix: "ifr";
 .#{$prefix}-border-bottom {
   border-bottom: 1px solid $primary;
 }
+.#{$prefix}-border-left {
+  border-left: 1px solid $primary;
+}
+.#{$prefix}-border-right {
+  border-right: 1px solid $primary;
+}
+.#{$prefix}-border-top {
+  border-top: 1px solid $primary;
+}
