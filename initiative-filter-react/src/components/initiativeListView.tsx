@@ -9,6 +9,7 @@ function InitiativeGridView({ initiatives }: { initiatives: Initiative[] }) {
 
   return (
     <div className="initiatives-container-list">
+      {initiatives.length === 0 && <div className="text-center">No initiatives found</div>}
       {initiatives.map((initiative) => {
         return (
             <div key={`initiative-${initiative.id}`} className="row initiative-item">

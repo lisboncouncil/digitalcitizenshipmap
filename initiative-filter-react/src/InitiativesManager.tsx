@@ -34,7 +34,7 @@ function InitiativesManager() {
 
   return (<div id="initiatives-container">
     <Filter />
-    <div className="mt-md-5 pb-5 mb-5 ifr-border-bottom">
+    <div className="mt-lg-5 pb-5 mb-5 ifr-border-bottom">
       <div className="mt-3 mt-lg-auto d-lg-flex justify-content-between">
         <div className="sort-by-controller">
           <div className="sort-by color-primary">Sort by
@@ -45,7 +45,7 @@ function InitiativesManager() {
         <div className="search-container mt-3 mt-lg-auto">
           <div className="ifr-input-field">
             { searchValue === "" && (<span className="ifr-input-icon"><i className="fa-solid fa-magnifying-glass"></i></span>)}
-            { searchValue !== "" && (<span className="ifr-input-icon" onClick={() => setSearchValue("")}><i className="pointer fa-solid fa-xmark"></i></span>)}
+            { searchValue !== "" && (<span className="ifr-input-icon" onClick={() => setSearchValue("")}><i className="cursor-pointer fa-solid fa-xmark"></i></span>)}
             <input type="text" value={searchValue} onInput={(e: React.FormEvent<EventTarget>) => setSearchValue((e.target as HTMLInputElement).value)} className="ifr-input search-input" placeholder="Search" />
           </div>
         </div>
@@ -56,13 +56,12 @@ function InitiativesManager() {
           <button id="display-mode-list" key="display-mode-list" className={`ifr-button ${displayMode === "list" && "active"}`} onClick={() => setDisplayMode("list")}>
             <div className="ifr-input-icon"><i className="fa-solid fa-list"></i></div>
           </button>
-          <button id="display-mode-list" key="display-mode-map" className={`ifr-button`} onClick={() => setDisplayMode("map")}>
+          <button id="display-mode-list" key="display-mode-map" className={`ifr-button`} onClick={() => setDisplayMode("grid")}>
             <div className="ifr-input-icon"><i className="fa-regular fa-map"></i></div>
           </button>
         </div>
       </div>
     </div>
-    {initiatives.length === 0 && <div className="text-center">No initiatives found</div>}
     { displayMode === "grid" && <InitiativeGridView initiatives={initiatives} />}
     { displayMode === "list" && <InitiativeListView initiatives={initiatives} /> }
     { displayMode === "map" && <InitiativeCountryMap initiatives={initiatives} /> }
