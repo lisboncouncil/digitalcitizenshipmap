@@ -80,9 +80,22 @@
 
 
 
+
 #initiatives-filter {
 
+  
+
   .filter-dropdown{
+
+    input:disabled {
+      cursor: not-allowed;
+    }
+
+    input[type="checkbox"][disabled] + label{
+      color: $primary;
+      cursor: not-allowed;
+    }
+
 
     .filter-checkbox{
       top: 50%;
@@ -149,3 +162,4 @@
 .map-container path{
   cursor: pointer;
 }
+

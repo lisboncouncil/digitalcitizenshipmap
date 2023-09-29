@@ -46,7 +46,7 @@ function InitiativesManager() {
           <div className="ifr-input-field">
             { searchValue === "" && (<span className="ifr-input-icon"><i className="fa-solid fa-magnifying-glass"></i></span>)}
             { searchValue !== "" && (<span className="ifr-input-icon" onClick={() => setSearchValue("")}><i className="cursor-pointer fa-solid fa-xmark"></i></span>)}
-            <input type="text" value={searchValue} onInput={(e: React.FormEvent<EventTarget>) => setSearchValue((e.target as HTMLInputElement).value)} className="ifr-input search-input" placeholder="Search" />
+            <input type="text" name="search" id="search" value={searchValue} onInput={(e: React.FormEvent<EventTarget>) => setSearchValue((e.target as HTMLInputElement).value)} className="ifr-input search-input" placeholder="Search" />
           </div>
         </div>
         <div className="mt-3 mt-lg-auto display-modes color-primary">Display
@@ -56,7 +56,7 @@ function InitiativesManager() {
           <button id="display-mode-list" key="display-mode-list" className={`ifr-button ${displayMode === "list" && "active"}`} onClick={() => setDisplayMode("list")}>
             <div className="ifr-input-icon"><i className="fa-solid fa-list"></i></div>
           </button>
-          <button id="display-mode-list" key="display-mode-map" className={`ifr-button`} onClick={() => setDisplayMode("grid")}>
+          <button id="display-mode-list" key="display-mode-map" className={`ifr-button ${displayMode === "map" && "active"}`} onClick={() => setDisplayMode("map")}>
             <div className="ifr-input-icon"><i className="fa-regular fa-map"></i></div>
           </button>
         </div>
