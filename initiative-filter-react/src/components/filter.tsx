@@ -71,16 +71,17 @@ function Filter() {
           <ul className="dropdown-menu" data-bs-auto-close="outside" onClick={(e) => { e.stopPropagation(); }}>
             {taxonomyPillars.map((pillar) => {
               return (
-                <li className="position-relative dropdown-item" key={`pillar-${pillar.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); togglePillar(pillar.id) }}>
+                <li className="position-relative dropdown-item" key={`pillar-${pillar.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); initiativesPillarsMap[pillar.id]?.length > 0 && togglePillar(pillar.id) }}>
                   <fieldset>
                     <div className="form-check ps-0 pe-3">
-                      <label className="form-check-label" htmlFor={`pillar-${pillar.id}`} >
-                        {pillar.name}<span className="ms-2 me-2 counter">({initiativesPillarsMap[pillar.id]?.length || "0"})</span>
-                      </label>
-                      <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); togglePillar(pillar.id) }} checked={checkPillar(pillar.id)}
-                        type="radio" name={`pillar-${pillar.id}`}
+                      <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); initiativesPillarsMap[pillar.id]?.length > 0 && togglePillar(pillar.id) }} checked={checkPillar(pillar.id)}
+                        disabled={initiativesPillarsMap[pillar.id] == null}
+                        type="checkbox" name={`pillar-${pillar.id}`}
                         id={`pillar-${pillar.id}`}
                       />
+                      <label className={`form-check-label`} htmlFor={`pillar-${pillar.id}`} >
+                        {pillar.name}<span className="ms-2 me-2 counter">({initiativesPillarsMap[pillar.id]?.length || "0"})</span>
+                      </label>
                     </div>
                   </fieldset>
                 </li>
@@ -97,16 +98,17 @@ function Filter() {
           <ul className="dropdown-menu" data-bs-auto-close="outside" onClick={(e) => { e.stopPropagation(); }}>
             {taxonomyCountries.map((country) => {
               return (
-                <li className="position-relative dropdown-item" key={`country-${country.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleCountry(country.id) }}>
+                <li className="position-relative dropdown-item" key={`country-${country.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); initiativesCountriesMap[country.id]?.length > 0 && toggleCountry(country.id) }}>
                   <fieldset>
                     <div className="form-check ps-0 pe-3">
+                      <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); initiativesCountriesMap[country.id]?.length > 0 && toggleCountry(country.id) }} checked={checkCountry(country.id)}
+                        disabled={initiativesCountriesMap[country.id] == null}
+                        type="checkbox" name={`country-${country.id}`}
+                        id={`country-${country.id}`}
+                      />
                       <label className="form-check-label" htmlFor={`country-${country.id}`} >
                         {country.name}<span className="ms-2 me-2 counter">({initiativesCountriesMap[country.id]?.length || "0"})</span>
                       </label>
-                      <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); toggleCountry(country.id) }} checked={checkCountry(country.id)}
-                        type="radio" name={`country-${country.id}`}
-                        id={`country-${country.id}`}
-                      />
                     </div>
                   </fieldset>
                 </li>
@@ -123,16 +125,17 @@ function Filter() {
           <ul className="dropdown-menu" data-bs-auto-close="outside" onClick={(e) => { e.stopPropagation(); }}>
             {taxonomyAudiences.map((audience) => {
               return (
-                <li className="position-relative dropdown-item" key={`audience-${audience.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleAudience(audience.id) }}>
+                <li className="position-relative dropdown-item" key={`audience-${audience.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); initiativesAudiencesMap[audience.id]?.length && toggleAudience(audience.id) }}>
                   <fieldset>
                     <div className="form-check ps-0 pe-3">
+                      <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); initiativesAudiencesMap[audience.id]?.length && toggleAudience(audience.id) }} checked={checkAudience(audience.id)}
+                        disabled={initiativesAudiencesMap[audience.id] == null}
+                        type="checkbox" name={`audience-${audience.id}`}
+                        id={`audience-${audience.id}`}
+                      />
                       <label className="form-check-label" htmlFor={`audience-${audience.id}`} >
                         {audience.name}<span className="ms-2 me-2 counter">({initiativesAudiencesMap[audience.id]?.length || "0"})</span>
                       </label>
-                      <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); toggleAudience(audience.id) }} checked={checkAudience(audience.id)}
-                        type="radio" name={`audience-${audience.id}`}
-                        id={`audience-${audience.id}`}
-                      />
                     </div>
                   </fieldset>
                 </li>
@@ -149,7 +152,7 @@ function Filter() {
         {filterPillars.map((pillarId) => {
           const pillar = taxonomyPillarsMap[pillarId]
           return (
-            <div className="ifr-button me-2 mb-2" onClick={() => togglePillar(pillarId)}>
+            <div className="ifr-button me-2 mb-2" key={`pillar-${pillarId}`} onClick={() => togglePillar(pillarId)}>
               {pillar?.name}
               <i className="ms-2 pointer fa-solid fa-xmark"></i>
             </div>
@@ -158,7 +161,7 @@ function Filter() {
         {filterCountries.map((countryId) => {
           const pillar = taxonomyCountriesMap[countryId]
           return (
-            <div className="ifr-button me-2 mb-2" onClick={() => toggleCountry(countryId)}>
+            <div className="ifr-button me-2 mb-2" key={`country-${countryId}`} onClick={() => toggleCountry(countryId)}>
               {pillar?.name}
               <i className="ms-2 pointer fa-solid fa-xmark"></i>
             </div>
@@ -167,7 +170,7 @@ function Filter() {
         {filterAudiences.map((audienceId) => {
           const pillar = taxonomyAudiencesMap[audienceId]
           return (
-            <div className="ifr-button me-2 mb-2" onClick={() => toggleAudience(audienceId)}>
+            <div className="ifr-button me-2 mb-2" key={`audience-${audienceId}`} onClick={() => toggleAudience(audienceId)}>
               {pillar?.name}
               <i className="ms-2 pointer fa-solid fa-xmark"></i>
             </div>
@@ -197,16 +200,17 @@ function Filter() {
                 <div className="accordion-body">
                   {taxonomyPillars.map((pillar) => {
                     return (
-                      <li className="position-relative dropdown-item pb-2 pt-2 ifr-border-bottom" key={`m-pillar-${pillar.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); togglePillar(pillar.id) }}>
+                      <li className="position-relative dropdown-item pb-2 pt-2 ifr-border-bottom" key={`m-pillar-${pillar.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); initiativesPillarsMap[pillar.id]?.length > 0 && togglePillar(pillar.id) }}>
                         <fieldset>
                           <div className="form-check ps-0 pe-3">
+                            <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); initiativesPillarsMap[pillar.id]?.length > 0 && togglePillar(pillar.id) }} checked={checkPillar(pillar.id)}
+                              disabled={initiativesPillarsMap[pillar.id] == null}
+                              type="checkbox" name={`m-pillar-${pillar.id}`}
+                              id={`m-pillar-${pillar.id}`}
+                            />
                             <label className="form-check-label" htmlFor={`m-pillar-${pillar.id}`} >
                               {pillar.name}<span className="ms-2 me-2 counter">({initiativesPillarsMap[pillar.id]?.length || "0"})</span>
                             </label>
-                            <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); togglePillar(pillar.id) }} checked={checkPillar(pillar.id)}
-                              type="radio" name={`m-pillar-${pillar.id}`}
-                              id={`pillar-${pillar.id}`}
-                            />
                           </div>
                         </fieldset>
                       </li>
@@ -226,16 +230,17 @@ function Filter() {
                 <div className="accordion-body">
                   {taxonomyCountries.map((country) => {
                     return (
-                      <li className="position-relative dropdown-item pb-2 pt-2 ifr-border-bottom" key={`m-country-${country.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleCountry(country.id) }}>
+                      <li className="position-relative dropdown-item pb-2 pt-2 ifr-border-bottom" key={`m-country-${country.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); initiativesCountriesMap[country.id]?.length > 0 && toggleCountry(country.id) }}>
                         <fieldset>
                           <div className="form-check ps-0 pe-3">
+                            <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); initiativesCountriesMap[country.id]?.length > 0 && toggleCountry(country.id) }} checked={checkCountry(country.id)}
+                              disabled={initiativesCountriesMap[country.id] == null}
+                              type="checkbox" name={`m-country-${country.id}`}
+                              id={`m-country-${country.id}`}
+                            />
                             <label className="form-check-label" htmlFor={`m-country-${country.id}`} >
                               {country.name}<span className="ms-2 me-2 counter">({initiativesCountriesMap[country.id]?.length || "0"})</span>
                             </label>
-                            <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); toggleCountry(country.id) }} checked={checkCountry(country.id)}
-                              type="radio" name={`m-country-${country.id}`}
-                              id={`country-${country.id}`}
-                            />
                           </div>
                         </fieldset>
                       </li>
@@ -255,16 +260,17 @@ function Filter() {
                 <div className="accordion-body">
                   {taxonomyAudiences.map((audience) => {
                     return (
-                      <li className="position-relative dropdown-item pb-2 pt-2 ifr-border-bottom" key={`m-audience-${audience.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleAudience(audience.id) }}>
+                      <li className="position-relative dropdown-item pb-2 pt-2 ifr-border-bottom" key={`m-audience-${audience.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); initiativesAudiencesMap[audience.id]?.length > 0 && toggleAudience(audience.id) }}>
                         <fieldset>
                           <div className="form-check ps-0 pe-3">
+                            <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); initiativesAudiencesMap[audience.id]?.length > 0 && toggleAudience(audience.id) }} checked={checkAudience(audience.id)}
+                              disabled={initiativesAudiencesMap[audience.id] == null}
+                              type="checkbox" name={`m-audience-${audience.id}`}
+                              id={`m-audience-${audience.id}`}
+                            />
                             <label className="form-check-label" htmlFor={`m-audience-${audience.id}`} >
                               {audience.name}<span className="ms-2 me-2 counter">({initiativesAudiencesMap[audience.id]?.length || "0"})</span>
                             </label>
-                            <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); toggleAudience(audience.id) }} checked={checkAudience(audience.id)}
-                              type="radio" name={`m-audience-${audience.id}`}
-                              id={`m-audience-${audience.id}`}
-                            />
                           </div>
                         </fieldset>
                       </li>
