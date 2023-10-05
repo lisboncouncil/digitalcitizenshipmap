@@ -1,22 +1,46 @@
 @import '../variables';
 
-.node--type-initiative {
+body.node--type-initiative {
 
-  //&.node--view-mode-full {
+  .round-block{
+    @extend .bg-primary-op10;
+    color: $accent-shade;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 1rem;
 
-  .field--name-field-country {
-    text-align: center;
+    .field_label{
+      margin-bottom: 2rem;
+    } 
+  }
 
-    .field__item {
-      display: inline-block;
+
+  .node__content{
+    margin-top: 0;
+  }
+  .initiative-icon{
+    display: block;
+    height: 35px;
+    margin: auto;
+  }
+
+  .field--name-field-target-audience,
+  .field--name-field-country,
+  .field--name-field-languages,
+  .field--name-field-custom-kick-off{
+    margin-top: 1rem;
+
+    & .field__label{
+      text-align: center;
+      color: $accent-shade;
+      margin-bottom: 1rem;  
+    }
+    & .field__item, & .field__item a, & .field__item span, & .field__items{
+      text-align: center;
       font-size: 1.5rem;
       font-weight: 500;
       text-transform: uppercase;
       color: $accent-shade;
-
-      &:not(:first-child) {
-        margin-left: 2rem;
-      }
     }
   }
 
@@ -56,89 +80,28 @@
     }
   }
 
-  .field--name-field-initiator-consortium,
-  .field--name-field-project-kick-off,
-  .field--name-dynamic-twig-fieldnode-project-kickoff-info,
-  .field--name-dynamic-token-fieldnode-project-kickoff {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    text-align: center;
-    color: white;
 
-    .field__item {
-      margin-top: 1rem;
-      font-weight: 500;
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      color: white;
-
-      a, p, span{
-        color: white;
-      }
-    }
-  }
-
-  .field--name-field-timeline-is-ongoing {
-    display: none;
-  }
-
-  .field--name-body {
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid $accent-shade;
-
-    p {
-      margin-top: 2rem;
-      max-width: 700px;
-      text-align: center;
-      margin: auto;
-    }
-  }
-
-  .field--name-field-target-audience,
-  .field--name-field-target-beneficiaries {
-    text-align: center;
-
-    .field__label {
-      margin-top: 2rem;
-      color: $accent-shade;
-    }
-
-    .field__item,
-    .field__item a,
-    .field__item span {
-      color: $accent-shade;
-      margin-top: 0.5rem;
-      font-weight: 500;
-      font-size: 1.5rem;
-      text-transform: uppercase;
-    }
-  }
 
   .field--name-field-milestones {
-    text-align: center;
-    margin-top: 1rem;
-
-    .field__label {
-      margin-top: 2rem;
-      color: $accent-shade;
-    }
-
-    .field__items {
+    &.field__items {
       display: block;
-
+      
       .field__item {
+        @extend .bg-primary-op10;
+        text-align: center;
+        margin: 1rem;
+        padding: 2rem 1rem;
         color: $accent-shade;
-        margin-top: 0.5rem;
         font-weight: 500;
         font-size: 1.5rem;
         text-transform: uppercase;
-
       }
     }
 
 
   }
+
+    // Deprecated 
 
   .field--name-field-url.field__link{
     display: flex;
@@ -164,6 +127,11 @@
 @media screen and (min-width: $mobile-breakpoint) {
   .node--type-initiative {
 
+    .breadcrumb{
+      padding-top: 2rem;
+      color: $accent-shade;
+    }
+  
     .field--name-field-image {
       margin-top: 2rem;
       margin-bottom: 1rem;
@@ -172,15 +140,7 @@
         max-width: 600px !important;
       }
     }
-    .field--name-field-country {
 
-      .field__item {
-
-        &:not(:first-child) {
-          margin-left: 2rem;
-        }
-      }
-    }
 
     .field--name-field-pillar {
       display: flex;
@@ -188,13 +148,13 @@
   }
 
   .field--name-field-milestones{
-    .field__items {
+    &.field__items {
       display: flex !important;
       justify-content: center !important;
       flex-wrap: wrap !important;
       
       .field__item{
-        padding: 1rem;
+        padding: 5rem 2rem !important;
         flex: 1 1 33% !important;
         max-width: 50%;
       }
