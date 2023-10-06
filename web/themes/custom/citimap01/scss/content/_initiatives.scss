@@ -38,9 +38,15 @@ body.node--type-initiative {
     & .field__item, & .field__item a, & .field__item span, & .field__items{
       text-align: center;
       font-size: 1.5rem;
-      font-weight: 500;
-      text-transform: uppercase;
       color: $accent-shade;
+
+      font-family: "DIN Condensed";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px; /* 133.333% */
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
     }
   }
 
@@ -92,14 +98,27 @@ body.node--type-initiative {
         margin: 1rem;
         padding: 2rem 1rem;
         color: $accent-shade;
-        font-weight: 500;
-        font-size: 1.5rem;
-        text-transform: uppercase;
+        font-weight: normal;
+        font-size: 1.38rem;
       }
     }
-
-
   }
+
+.field--name-field-initiator-consortium .field__label,
+.field--name-field-contact-information .field__label {
+
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.embed-initiative-video {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  margin: auto;
+}
+
+
 
     // Deprecated 
 

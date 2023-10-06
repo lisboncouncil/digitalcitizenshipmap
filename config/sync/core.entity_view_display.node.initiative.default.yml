@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.initiative.field_contact_information
     - field.field.node.initiative.field_country
     - field.field.node.initiative.field_image
+    - field.field.node.initiative.field_initiative_video
     - field.field.node.initiative.field_initiator_consortium
     - field.field.node.initiative.field_languages
     - field.field.node.initiative.field_location_description
@@ -28,6 +29,7 @@ dependencies:
     - svg_image
     - text
     - user
+    - video_embed_field
 third_party_settings:
   ds:
     layout:
@@ -104,12 +106,52 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_initiative_video:
+    type: video_embed_field_video
+    label: above
+    settings:
+      autoplay: true
+      responsive: true
+      width: 854
+      height: 480
+    third_party_settings: {  }
+    weight: 18
+    region: content
   field_initiator_consortium:
     type: string
     label: above
     settings:
       link_to_entity: false
-    third_party_settings: {  }
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: expert
+          settings:
+            lb: 'The Initiators'
+            lbw: false
+            lbw-el: ''
+            lbw-cl: ''
+            lbw-at: ''
+            lb-col: false
+            ow: false
+            ow-el: ''
+            ow-cl: ''
+            ow-at: ''
+            ow-def-at: false
+            ow-def-cl: false
+            fis: false
+            fis-el: ''
+            fis-cl: ''
+            fis-at: ''
+            fis-def-at: false
+            fi: false
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
     weight: 15
     region: content
   field_languages:

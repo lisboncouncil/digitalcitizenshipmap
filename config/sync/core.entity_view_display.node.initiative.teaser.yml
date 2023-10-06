@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.initiative.field_contact_information
     - field.field.node.initiative.field_country
     - field.field.node.initiative.field_image
+    - field.field.node.initiative.field_initiative_video
     - field.field.node.initiative.field_initiator_consortium
     - field.field.node.initiative.field_languages
     - field.field.node.initiative.field_location_description
@@ -67,6 +68,7 @@ content:
 hidden:
   field_contact_information: true
   field_country: true
+  field_initiative_video: true
   field_initiator_consortium: true
   field_languages: true
   field_location_description: true

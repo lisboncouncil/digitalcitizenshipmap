@@ -5,6 +5,11 @@ dependencies:
   config:
     - field.storage.node.field_initiator_consortium
     - node.type.initiative
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'The Initiators'
 id: node.initiative.field_initiator_consortium
 field_name: field_initiator_consortium
 entity_type: node

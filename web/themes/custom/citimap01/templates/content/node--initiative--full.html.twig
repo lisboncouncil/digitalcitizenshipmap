@@ -146,6 +146,16 @@
           {{ content.field_milestones }}
         </div>
 
+        <!-- Section secondary image / video -->
+
+        {% if content.field_initiative_video is not empty %}
+        <div class="row mt-5">
+          <div class="embed-initiative-video">
+            {{ content.field_initiative_video }}
+          </div>
+        </div>
+        {% endif %}
+
         <div class="row mt-5">
           <div class="col-md-8">
             <div class="round-block">
@@ -154,7 +164,7 @@
           </div>
           <div class="col-md-4">
             <div class="round-block">
-              {{ content.field_project_team }}
+              {{ content.field_contact_information }}
             </div>
           </div>
       </div>

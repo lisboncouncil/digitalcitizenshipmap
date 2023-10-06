@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.initiative.field_contact_information
     - field.field.node.initiative.field_country
     - field.field.node.initiative.field_image
+    - field.field.node.initiative.field_initiative_video
     - field.field.node.initiative.field_initiator_consortium
     - field.field.node.initiative.field_languages
     - field.field.node.initiative.field_location_description
@@ -29,6 +30,7 @@ dependencies:
     - svg_image
     - text
     - user
+    - video_embed_field
 id: node.initiative.full
 targetEntityType: node
 bundle: initiative
@@ -47,6 +49,20 @@ content:
             lb-col: false
             classes: {  }
     weight: 4
+    region: content
+  field_contact_information:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: 'Reach out'
+            lb-col: false
+            classes: {  }
+    weight: 12
     region: content
   field_country:
     type: entity_reference_label
@@ -79,12 +95,31 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_initiative_video:
+    type: video_embed_field_video
+    label: hidden
+    settings:
+      autoplay: true
+      responsive: true
+      width: 854
+      height: 480
+    third_party_settings: {  }
+    weight: 13
+    region: content
   field_initiator_consortium:
     type: string
     label: above
     settings:
       link_to_entity: false
-    third_party_settings: {  }
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: 'The initiators'
+            lb-col: false
+            classes: {  }
     weight: 5
     region: content
   field_languages:
@@ -190,7 +225,6 @@ content:
     region: content
 hidden:
   content_moderation_control: true
-  field_contact_information: true
   field_location_description: true
   field_type_of_initiative: true
   field_why: true

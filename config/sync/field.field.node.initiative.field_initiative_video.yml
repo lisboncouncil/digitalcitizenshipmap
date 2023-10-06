@@ -1,0 +1,25 @@
+uuid: e8f85a71-3a76-481c-9fa2-b5ed34506604
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_initiative_video
+    - node.type.initiative
+  module:
+    - video_embed_field
+id: node.initiative.field_initiative_video
+field_name: field_initiative_video
+entity_type: node
+bundle: initiative
+label: Video
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    youtube: youtube
+    vimeo: vimeo
+    youtube_playlist: '0'
+field_type: video_embed_field
