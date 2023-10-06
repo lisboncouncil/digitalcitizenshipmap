@@ -155,6 +155,14 @@
           </div>
         </div>
         {% endif %}
+        
+        {% if content.field_secondary_image is not empty %}
+        <div class="row mt-5">
+          <div class="embed-initiative-video secondary-image">
+            {{ content.field_secondary_image }}
+          </div>
+        </div>
+        {% endif %}
 
         <div class="row mt-5">
           <div class="col-md-8">

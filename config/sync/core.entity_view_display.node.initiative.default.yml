@@ -14,13 +14,13 @@ dependencies:
     - field.field.node.initiative.field_milestones
     - field.field.node.initiative.field_pillar
     - field.field.node.initiative.field_project_kick_off
+    - field.field.node.initiative.field_secondary_image
     - field.field.node.initiative.field_target_audience
     - field.field.node.initiative.field_target_beneficiaries
     - field.field.node.initiative.field_timeline_is_ongoing
     - field.field.node.initiative.field_type_of_initiative
     - field.field.node.initiative.field_url
     - field.field.node.initiative.field_why
-    - image.style.wide
     - node.type.initiative
   module:
     - datetime
@@ -192,6 +192,21 @@ content:
       format_type: medium
     third_party_settings: {  }
     weight: 13
+    region: content
+  field_secondary_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 19
     region: content
   field_target_audience:
     type: entity_reference_label

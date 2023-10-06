@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.initiative.field_milestones
     - field.field.node.initiative.field_pillar
     - field.field.node.initiative.field_project_kick_off
+    - field.field.node.initiative.field_secondary_image
     - field.field.node.initiative.field_target_audience
     - field.field.node.initiative.field_target_beneficiaries
     - field.field.node.initiative.field_timeline_is_ongoing
@@ -75,6 +76,7 @@ hidden:
   field_milestones: true
   field_pillar: true
   field_project_kick_off: true
+  field_secondary_image: true
   field_target_audience: true
   field_target_beneficiaries: true
   field_timeline_is_ongoing: true

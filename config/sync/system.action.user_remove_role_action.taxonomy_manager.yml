@@ -1,0 +1,14 @@
+uuid: b87372a6-5cfc-4f1f-8fa4-5e7dcc0675e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.taxonomy_manager
+  module:
+    - user
+id: user_remove_role_action.taxonomy_manager
+label: 'Remove the Taxonomy manager role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: taxonomy_manager

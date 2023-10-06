@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.initiative.field_milestones
     - field.field.node.initiative.field_pillar
     - field.field.node.initiative.field_project_kick_off
+    - field.field.node.initiative.field_secondary_image
     - field.field.node.initiative.field_target_audience
     - field.field.node.initiative.field_target_beneficiaries
     - field.field.node.initiative.field_timeline_is_ongoing
@@ -95,14 +96,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_languages:
-    type: entity_reference_autocomplete
+    type: options_buttons
     weight: 8
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_location_description:
     type: string_textarea
@@ -132,15 +129,19 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_target_audience:
-    type: entity_reference_autocomplete
-    weight: 7
+  field_secondary_image:
+    type: image_image
+    weight: 27
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_target_audience:
+    type: options_buttons
+    weight: 7
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_timeline_is_ongoing:
     type: boolean_checkbox

@@ -6,7 +6,7 @@ dependencies:
     - file
 id: user_administrator
 label: 'Users administrator'
-weight: -6
+weight: -5
 is_admin: null
 permissions:
   - 'access user profiles'

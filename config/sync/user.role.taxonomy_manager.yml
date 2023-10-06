@@ -1,0 +1,40 @@
+uuid: a161551c-61b4-4ae1-89e5-9c62fb855496
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.audiences
+    - taxonomy.vocabulary.countries
+    - taxonomy.vocabulary.languages
+    - taxonomy.vocabulary.pillars
+    - taxonomy.vocabulary.tags
+    - taxonomy.vocabulary.types_of_initiative
+  module:
+    - taxonomy
+    - taxonomy_manager
+id: taxonomy_manager
+label: 'Taxonomy manager'
+weight: -6
+is_admin: null
+permissions:
+  - 'access taxonomy manager list'
+  - 'access taxonomy overview'
+  - 'administer taxonomy'
+  - 'create terms in audiences'
+  - 'create terms in countries'
+  - 'create terms in languages'
+  - 'create terms in pillars'
+  - 'create terms in tags'
+  - 'create terms in types_of_initiative'
+  - 'delete terms in audiences'
+  - 'delete terms in countries'
+  - 'delete terms in languages'
+  - 'delete terms in pillars'
+  - 'delete terms in tags'
+  - 'delete terms in types_of_initiative'
+  - 'edit terms in audiences'
+  - 'edit terms in countries'
+  - 'edit terms in languages'
+  - 'edit terms in pillars'
+  - 'edit terms in tags'
+  - 'edit terms in types_of_initiative'

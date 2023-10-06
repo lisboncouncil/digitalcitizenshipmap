@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.initiative.field_milestones
     - field.field.node.initiative.field_pillar
     - field.field.node.initiative.field_project_kick_off
+    - field.field.node.initiative.field_secondary_image
     - field.field.node.initiative.field_target_audience
     - field.field.node.initiative.field_target_beneficiaries
     - field.field.node.initiative.field_timeline_is_ongoing
@@ -28,6 +29,7 @@ dependencies:
     - ds
     - link
     - svg_image
+    - svg_image_responsive
     - text
     - user
     - video_embed_field
@@ -169,6 +171,21 @@ content:
             lb-col: false
             classes: {  }
     weight: 11
+    region: content
+  field_secondary_image:
+    type: responsive_image
+    label: hidden
+    settings:
+      responsive_image_style: ''
+      image_link: ''
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 14
     region: content
   field_target_audience:
     type: entity_reference_label
