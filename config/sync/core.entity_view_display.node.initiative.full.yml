@@ -23,107 +23,12 @@ dependencies:
     - image.style.wide
     - node.type.initiative
   module:
+    - datetime
     - ds
-    - field_group
     - link
     - svg_image
     - text
     - user
-third_party_settings:
-  ds:
-    layout:
-      id: layout_onecol
-      library: layout_discovery/onecol
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-    regions:
-      content:
-        - field_country
-        - field_pillar
-        - 'dynamic_token_field:node-project_kickoff'
-        - field_image
-        - field_url
-        - group_row
-        - field_initiator_consortium
-        - body
-        - field_target_audience
-        - field_target_beneficiaries
-        - field_milestones
-        - group_col_6_2
-        - 'dynamic_twig_field:node-project_kickoff_info'
-        - group_col_6
-    fields:
-      'dynamic_twig_field:node-project_kickoff_info':
-        plugin_id: 'dynamic_twig_field:node-project_kickoff_info'
-        weight: 9
-        label: hidden
-        formatter: default
-      'dynamic_token_field:node-project_kickoff':
-        plugin_id: 'dynamic_token_field:node-project_kickoff'
-        weight: 1
-        label: above
-        formatter: default
-  field_group:
-    group_row:
-      children:
-        - group_col_6_2
-        - group_col_6
-      label: Row
-      parent_name: ''
-      region: content
-      weight: 4
-      format_type: html_element
-      format_settings:
-        classes: 'row bg-fullwidth-primary mt-5'
-        show_empty_fields: false
-        id: ''
-        element: div
-        show_label: false
-        label_element: h3
-        label_element_classes: ''
-        attributes: ''
-        effect: none
-        speed: fast
-    group_col_6:
-      children:
-        - 'dynamic_token_field:node-project_kickoff'
-      label: Col-6
-      parent_name: group_row
-      region: content
-      weight: 10
-      format_type: html_element
-      format_settings:
-        classes: 'col-lg-6 col-12'
-        show_empty_fields: false
-        id: ''
-        element: div
-        show_label: false
-        label_element: h3
-        label_element_classes: ''
-        attributes: ''
-        effect: none
-        speed: fast
-    group_col_6_2:
-      children:
-        - field_initiator_consortium
-      label: Col-6
-      parent_name: group_row
-      region: content
-      weight: 9
-      format_type: html_element
-      format_settings:
-        classes: 'col-lg-6 col-12'
-        show_empty_fields: false
-        id: ''
-        element: div
-        show_label: false
-        label_element: h3
-        label_element_classes: ''
-        attributes: ''
-        effect: none
-        speed: fast
 id: node.initiative.full
 targetEntityType: node
 bundle: initiative
@@ -141,7 +46,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 5
+    weight: 4
     region: content
   field_country:
     type: entity_reference_label
@@ -182,9 +87,17 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
+  field_languages:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
   field_milestones:
     type: text_trimmed
-    label: above
+    label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
@@ -206,21 +119,55 @@ content:
             classes: {  }
     weight: 1
     region: content
+  field_project_kick_off:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: html_year
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 11
+    region: content
   field_target_audience:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
     weight: 6
     region: content
   field_target_beneficiaries:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     weight: 7
+    region: content
+  field_timeline_is_ongoing:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 10
     region: content
   field_url:
     type: link
@@ -244,10 +191,7 @@ content:
 hidden:
   content_moderation_control: true
   field_contact_information: true
-  field_languages: true
   field_location_description: true
-  field_project_kick_off: true
-  field_timeline_is_ongoing: true
   field_type_of_initiative: true
   field_why: true
   links: true
