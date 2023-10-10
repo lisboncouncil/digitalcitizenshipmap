@@ -106,7 +106,6 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
   },
   loadFiltersConfig: () => {
     const filtersData = localStorage.getItem("filterPillars")
-    console.log("filtersData", filtersData)
     if(filtersData) {
       const filters = JSON.parse(filtersData)
       set({
