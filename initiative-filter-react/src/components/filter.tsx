@@ -44,7 +44,6 @@ function Filter() {
 
   useEffect(() => {
     const initializeData = (async () => {
-      console.log("calling fetch data")
       //loadFiltersConfig()
       await fetchData()
     })

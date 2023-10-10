@@ -17,12 +17,12 @@ function InitiativesManager() {
   const updateSortBy = useInitiativesStore((state) => state.updateSortBy)
   const updateStoreSearch = useInitiativesStore((state) => state.updateSearchInput)
   const searchInput = useInitiativesStore((state) => state.searchInput)
-  const [displayMode, setDisplayMode] = useState("map" as DisplayMode)
+  const [displayMode, setDisplayMode] = useState("grid" as DisplayMode)
 
   const [searchValue, setSearchValue] = useState(searchInput)
 
   const updateSearchMemoed = useMemo( 
-    () => debounce((value) => { console.log("test");updateStoreSearch(value) }, 500), [updateStoreSearch] )
+    () => debounce((value) => { updateStoreSearch(value) }, 500), [updateStoreSearch] )
 
   useEffect(() => {
     updateSearchMemoed(searchValue)

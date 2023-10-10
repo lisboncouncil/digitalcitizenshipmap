@@ -132,7 +132,10 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
     const initiativesPillarsMap = {} as {[key: number]: Initiative[]}
     const initiativesAudiencesMap = {} as {[key: number]: Initiative[]}
 
-    const initiatives = get().initiativesFiltered()
+    // This code filters initiatives by country, pillar and audience accoinding to the initiatives filtered to be counted
+
+    // const initiatives = get().initiativesFiltered()
+    const initiatives = get().initiatives
 
     initiatives.forEach(initiative => {
       initiative.countries.forEach(countryId => {
@@ -161,7 +164,7 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
   },
 
   initiativesFiltered: () => {
-    const arrayContainAll = (array: number[], search: number[]) => search.every(x => array.includes(x))
+    const arrayContainAll = (array: number[], search: number[]) => search.some(x => array.includes(x))
 
      let initiatives = get().initiatives.filter(initiative => {
       

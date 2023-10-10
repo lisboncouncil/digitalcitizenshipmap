@@ -81,7 +81,7 @@ function InitiativeCountryMap({ initiatives }: { initiatives: Initiative[] }) {
                 disabledcolor="#eeeeee"
                 preserveAspectRatio="none"
                 enabledcountries={enabledCountries}
-                oncountryclick={(iso2: string) => {console.log("test");onCountryClick(iso2)}}
+                oncountryclick={(iso2: string) => {onCountryClick(iso2)}}
                 countryselected={selectedCountriesISO} />
             </div>
           </div>
