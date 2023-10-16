@@ -161,7 +161,7 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
   },
 
   initiativesFiltered: () => {
-    const arrayContainAll = (array: number[], search: number[]) => search.every(x => array.includes(x))
+    const arrayContainAll = (array: number[], search: number[]) => search.some(x => array.includes(x))
 
      let initiatives = get().initiatives.filter(initiative => {
       
