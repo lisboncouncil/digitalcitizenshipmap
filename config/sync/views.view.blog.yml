@@ -190,6 +190,7 @@ display:
         title: Blog
         description: ''
         weight: -48
+        enabled: false
         expanded: true
         menu_name: main
         parent: ''
