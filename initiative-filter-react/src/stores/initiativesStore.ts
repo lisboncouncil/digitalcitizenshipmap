@@ -267,7 +267,7 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
     const taxonomyAudiences: TaxonomyAudience[] = (await response.json()).map((response: any): TaxonomyAudience => {
       return {
         id: parseInt(response.id),
-        name: response.name.replace(/&lt;/g, '<').replace(/&gt;/g, '>'),
+        name: response.name.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&#039;/g, "'"),
         initiatives_count: parseInt(response.initiatives_count)
       }
     })
@@ -338,11 +338,6 @@ const useInitiativesStore = create(subscribeWithSelector<InitiativeState>((set, 
   }
 })))
 
-
-/*const audienceSub = useInitiativesStore.subscribe((state) => state.filterAudiences, () => {
-  useInitiativesStore.getState().updateInitiativesCountMap()
-  console.log("Audiences changed, updated local storage")
-})*/
 
 
 
