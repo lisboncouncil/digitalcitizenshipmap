@@ -75,7 +75,7 @@ function Filter() {
                   <fieldset>
                     <div className="form-check ps-0 pe-3">
                       <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); togglePillar(pillar.id) }} checked={checkPillar(pillar.id)}
-                        disabled={initiativesPillarsMap[pillar.id] == null}
+                        //disabled={initiativesPillarsMap[pillar.id] == null}
                         type="checkbox" name={`pillar-${pillar.id}`}
                         id={`pillar-${pillar.id}`}
                       />
@@ -129,7 +129,7 @@ function Filter() {
                   <fieldset>
                     <div className="form-check ps-0 pe-3">
                       <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); initiativesAudiencesMap[audience.id]?.length && toggleAudience(audience.id) }} checked={checkAudience(audience.id)}
-                        disabled={initiativesAudiencesMap[audience.id] == null}
+                        //disabled={initiativesAudiencesMap[audience.id] == null}
                         type="checkbox" name={`audience-${audience.id}`}
                         id={`audience-${audience.id}`}
                       />
@@ -204,7 +204,7 @@ function Filter() {
                         <fieldset>
                           <div className="form-check ps-0 pe-3">
                             <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); initiativesPillarsMap[pillar.id]?.length > 0 && togglePillar(pillar.id) }} checked={checkPillar(pillar.id)}
-                              disabled={initiativesPillarsMap[pillar.id] == null}
+                              //disabled={initiativesPillarsMap[pillar.id] == null}
                               type="checkbox" name={`m-pillar-${pillar.id}`}
                               id={`m-pillar-${pillar.id}`}
                             />
@@ -234,7 +234,7 @@ function Filter() {
                         <fieldset>
                           <div className="form-check ps-0 pe-3">
                             <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); toggleCountry(country.id) }} checked={checkCountry(country.id)}
-                              disabled={initiativesCountriesMap[country.id] == null}
+                              //disabled={initiativesCountriesMap[country.id] == null}
                               type="checkbox" name={`m-country-${country.id}`}
                               id={`m-country-${country.id}`}
                             />
@@ -264,7 +264,7 @@ function Filter() {
                         <fieldset>
                           <div className="form-check ps-0 pe-3">
                             <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); toggleAudience(audience.id) }} checked={checkAudience(audience.id)}
-                              disabled={initiativesAudiencesMap[audience.id] == null}
+                              //disabled={initiativesAudiencesMap[audience.id] == null}
                               type="checkbox" name={`m-audience-${audience.id}`}
                               id={`m-audience-${audience.id}`}
                             />
