@@ -125,10 +125,10 @@ function Filter() {
           <ul className="dropdown-menu" data-bs-auto-close="outside" onClick={(e) => { e.stopPropagation(); }}>
             {taxonomyAudiences.map((audience) => {
               return (
-                <li className="position-relative dropdown-item" key={`audience-${audience.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); initiativesAudiencesMap[audience.id]?.length && toggleAudience(audience.id) }}>
+                <li className="position-relative dropdown-item" key={`audience-${audience.id}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleAudience(audience.id) }}>
                   <fieldset>
                     <div className="form-check ps-0 pe-3">
-                      <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); initiativesAudiencesMap[audience.id]?.length && toggleAudience(audience.id) }} checked={checkAudience(audience.id)}
+                      <input className="form-check-input position-absolute ms-2 me-2 end-0" onClick={(e) => { e.stopPropagation(); toggleAudience(audience.id) }} checked={checkAudience(audience.id)}
                         //disabled={initiativesAudiencesMap[audience.id] == null}
                         type="checkbox" name={`audience-${audience.id}`}
                         id={`audience-${audience.id}`}
