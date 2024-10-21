@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Types of initiative'
 vid: types_of_initiative
-description: ''
+description: null
 weight: 0
+new_revision: false
